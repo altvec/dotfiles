@@ -1,0 +1,3 @@
+alias zconfig="subl ~/.zshrc"
+alias mkvenv2="mkvirtualenv --python /usr/local/bin/python"
+alias mkvenv3="mkvirtualenv --python /usr/local/bin/python3"
