@@ -21,10 +21,6 @@ export PATH=/usr/local/bin:$PATH
 echo "Installing necessary homebrew components..."
 brew install git openssl autoconf automake ssh-copy-id zsh ffmpeg
 
-# Updating submodules
-git submodule init
-git submodule update
-
 echo "Installing Python..."
 brew install python
 
@@ -35,6 +31,10 @@ pip install virtualenv virtualenvwrapper fabric pep8 flake8
 # Clone dotfiles repo
 git clone https://github.com/altvec/dotfiles.git $DOTFILES
 cd $DOTFILES
+
+# Updating submodules
+git submodule init
+git submodule update
 
 # Link shell files and change default bash to ZSH
 ln -s $DOTFILES/zshrc $HOME/.zshrc
