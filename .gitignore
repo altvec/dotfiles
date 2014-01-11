@@ -1,0 +1,5 @@
+.DS_Store
+*.alias
+cache
+*.pem
+*.pyc
