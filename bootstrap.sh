@@ -1,5 +1,9 @@
 #!/usr/bin/env sh
 
+# THIS IS WORK IN PROGRESS! BE VERY VERY CAREFUL!
+#
+# You should download this file first, when do chmod +x and run
+#
 # Requirements:
 #   - Dropbox
 #   - should be run from the default login shell
