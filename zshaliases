@@ -1,3 +1,11 @@
-alias zconfig="subl ~/.zshrc"
+alias zconf="subl ~/.zshrc"
+alias zalia="subl ~/.zshaliases"
+
+# Python and venv
 alias mkvenv2="mkvirtualenv --python /usr/local/bin/python"
 alias mkvenv3="mkvirtualenv --python /usr/local/bin/python3"
+
+# Git stuff
+alias gits="clear; git status"
+alias gitl="git log"
+alias gitpo="git push origin"
