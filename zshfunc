@@ -19,3 +19,8 @@ unpk() {
     "'$1' is not a valid file"
   fi
 }
+
+# View man pages as PDF
+pman() {
+    man -t "${1}" | open -f -a /Applications/Preview.app
+}
