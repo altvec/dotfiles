@@ -57,3 +57,4 @@ cp $DROPBOX/Private/ssh/keys/srg.pub $HOME/.ssh/srg.pub
 
 # Git configs
 ln -s $DROPBOX/Private/gitconfig $HOME/.gitconfig
+ln -s $DOTFILES/.gitignore $HOME/.gitignore

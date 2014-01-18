@@ -3,3 +3,6 @@
 cache
 *.pem
 *.pyc
+*.db
+*.tmp
+*.bak
