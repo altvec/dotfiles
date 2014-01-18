@@ -1,5 +1,9 @@
 alias zconf="subl ~/.zshrc"
 alias zalia="subl ~/.zshaliases"
+alias findn='find . -name '
+alias df='df -h'
+alias cdd='cd -'
+alias psaux='ps aux | grep -v grep | grep -i'
 
 # Python and venv
 alias mkvenv2="mkvirtualenv --python /usr/local/bin/python"
