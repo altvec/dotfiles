@@ -36,7 +36,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew python django pip osx colorize vagrant)
+plugins=(git brew python django pip osx colorize)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -45,6 +45,7 @@ export TERM="xterm-256color"
 export EDITOR="subl"
 export PATH=./bin:$PATH
 export PATH=/usr/local/bin:$PATH
+export PATH=$PATH:/sbin
 
 # History
 SAVEHIST=10000
@@ -63,7 +64,6 @@ source $HOME/.zshaliases
 source $HOME/.zshfunc
 
 # Python stuff
-#export PATH=/usr/local/share/python:/usr/local/share/python3:$PATH
 #export PIP_REQUIRE_VIRTUALENV=true
 export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 export VIRTUALENV_DISTRIBUTE=true
