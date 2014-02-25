@@ -38,9 +38,7 @@ set showmatch
 set ignorecase
 set smartcase
 set number
-
 set smarttab
-
 set hlsearch
 set incsearch
 set textwidth=79
@@ -48,8 +46,10 @@ set nocursorline
 set nojoinspaces
 set cpoptions+=J
 set noswapfile
-
 set expandtab
+set list
+set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set lazyredraw
 
 nnoremap ; :
 map <C-h> <C-w>h
