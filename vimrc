@@ -78,3 +78,7 @@ augroup myvimrc
     au!
     au BufWritePost .vimrc,_vimrc,.gvimrc,_gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+au FileType javascript setlocal tabstop=2 shiftwidth=2
+au BufNewFile,BufRead *.html setlocal filetype=htmldjango
+au FileType htmldjango setlocal textwidth=0 tabstop=2 shiftwidth=2
