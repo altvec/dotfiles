@@ -47,6 +47,9 @@ export PATH=./bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=$PATH:/sbin
 
+# Postgres.app
+export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
+
 # History
 SAVEHIST=10000
 HISTSIZE=10000
