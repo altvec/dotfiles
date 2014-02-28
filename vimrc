@@ -69,9 +69,12 @@ set background=dark
 let g:badwolf_tabline=2
 let g:badwolf_html_link_underline=0
 colorscheme badwolf
+set t_Co=256
 
 " Gui settings
-set guifont=Menlo:h12
+if has("gui_running")
+    set guifont=Menlo:h12
+endif
 
 " Auto reload .vimrc
 augroup myvimrc
@@ -82,3 +85,5 @@ augroup END
 au FileType javascript setlocal tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 au FileType htmldjango setlocal textwidth=0 tabstop=2 shiftwidth=2
+
+let g:vim_markdown_folding_disabled=1
