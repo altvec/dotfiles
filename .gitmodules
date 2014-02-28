@@ -1,3 +1,12 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git://github.com/robbyrussell/oh-my-zsh.git
+[submodule "vim/bundle/badwolf"]
+	path = vim/bundle/badwolf
+	url = git@github.com:sjl/badwolf.git
+[submodule "vim/bundle/vim-pathogen"]
+	path = vim/bundle/vim-pathogen
+	url = git@github.com:tpope/vim-pathogen.git
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = git@github.com:plasticboy/vim-markdown.git
