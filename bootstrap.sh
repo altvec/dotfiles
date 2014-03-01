@@ -61,3 +61,10 @@ ln -s $DOTFILES/.gitignore $HOME/.gitignore
 
 # AppleScripts
 ln -s $DROPBOX/Private/applescripts/*.applescript $HOME/Library/Scripts/
+
+# VIM
+mkdir -p $DOTFILES/vim/tmp/swap
+mkdir -p $DOTFILES/vim/tmp/backup
+mkdir -p $DOTFILES/vim/tmp/undo
+ln -s $DOTFILES/vimrc $HOME/.vimrc
+ln -s $DOTFILES/vim $HOME/.vim
