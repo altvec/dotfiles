@@ -87,3 +87,28 @@ au BufNewFile,BufRead *.html setlocal filetype=htmldjango
 au FileType htmldjango setlocal textwidth=0 tabstop=2 shiftwidth=2
 
 let g:vim_markdown_folding_disabled=1
+
+" Leader
+let mapleader = ","
+let maplocalleader = "\\"
+
+" Easier split navigation
+" use ctrl-[hjkl] to select the active spilt
+nmap <silent> <c-k> :wincmd k<cr>
+nmap <silent> <c-j> :wincmd j<cr>
+nmap <silent> <c-h> :wincmd h<cr>
+nmap <silent> <c-l> :wincmd l<cr>
+
+" Easier tabs navigation
+" use <leader> + shift + '(' or ')'
+nnoremap <leader>( :tabprev<cr>
+nnoremap <leader>) :tabnext<cr>
+
+" NERDTree
+noremap <leader>t :NERDTreeToggle<cr>
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let NERDTreeChDirMode = 2
+let NERDTreeHighLightCursorline = 1
+let NERDTreeIgnore = ['.vim$', '\~S', '.*\.pyc$', 'db.db']
