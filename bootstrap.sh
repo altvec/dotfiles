@@ -68,3 +68,6 @@ mkdir -p $DOTFILES/vim/tmp/backup
 mkdir -p $DOTFILES/vim/tmp/undo
 ln -s $DOTFILES/vimrc $HOME/.vimrc
 ln -s $DOTFILES/vim $HOME/.vim
+
+# Ruby
+ln -s $DOTFILES/.gemrc $HOME/.gemrc

@@ -78,3 +78,6 @@ source /usr/local/bin/virtualenvwrapper.sh
 # Node and NPM
 export PATH=$PATH:/usr/local/share/npm/bin
 export NODE_PATH=/usr/local/lib/node_modules
+
+# Ruby stuff
+eval "$(rbenv init -)"
