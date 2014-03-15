@@ -4,6 +4,7 @@ alias findn='find . -name '
 alias df='df -h'
 alias cdd='cd -'
 alias psaux='ps aux | grep -v grep | grep -i'
+#alias subl='subl -w -n'
 
 # Python and venv
 alias mkvenv2="mkvirtualenv --python /usr/local/bin/python"
