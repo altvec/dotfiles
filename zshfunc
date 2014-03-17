@@ -1,5 +1,5 @@
 # Unpack file of $type
-unpk() {
+function unpk() {
   if [ -f $1 ]; then
     case $1 in
       *.tar.bz2)  tar xvjf $1                     ;;
@@ -21,6 +21,38 @@ unpk() {
 }
 
 # View man pages as PDF
-pman() {
+function pman() {
     man -t "${1}" | open -f -a /Applications/Preview.app
+}
+
+# Show file/dir size
+function size() {
+    du -sc "$@" 2>&1 | grep -v '^du:'
+}
+
+# Show how much RAM application uses
+# $ ram firefox
+function ram() {
+    local sum
+    local items
+    local app="$1"
+    if [ -z "$app" ]; then
+        echo "First argument - pattern to grep from processes"
+    else
+        sum=0
+        for i in `ps aux | grep -i "$app" | grep -v "grep" | awk '{ print $6 }'`; do
+            sum=$(($i + $sum))
+        done
+        sum=$(echo "scale=2; $sum / 1024.0" | bc)
+        if [[ $sum != "0" ]]; then
+            echo "${fg[blue]}${app}${reset_color} uses ${fg[green]}${sum}${reset_color} MBs of RAM."
+        else
+            echo "There are no processes with pattern '${fg[blue]}${app}${reset_color}' are running."
+        fi
+    fi
+}
+
+# Monitor IO in real-time
+function openfiles() {
+    sudo dtrace -n 'syscall::open*:entry { printf("%s %s",execname,copyinstr(arg0)); }'
 }
