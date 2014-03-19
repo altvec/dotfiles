@@ -1,1 +1,22 @@
-/Users/srg/Dropbox/Private/git/gitconfig
+[user]
+	name = altvec
+	email = sergey@bluehat.me
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
+	interactive = auto
+[core]
+	excludesfile = /Users/srg/.gitignore
+    editor = vim
+[merge]
+	tool = opendiff
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+[alias]
+    l = log --pretty=oneline -n 20 --graph --abbrev-commit --decorate
+    s = status -s
+    c = clone --recursive
