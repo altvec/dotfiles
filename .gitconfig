@@ -1,21 +1,21 @@
 [user]
-	name = altvec
-	email = sergey@bluehat.me
+    name = altvec
+    email = sergey@bluehat.me
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = true
-	interactive = auto
+    diff = auto
+    status = auto
+    branch = auto
+    ui = true
+    interactive = auto
 [core]
-	excludesfile = /Users/srg/.gitignore
+    excludesfile = /Users/srg/.gitignore
     editor = vim
 [merge]
-	tool = opendiff
+    tool = opendiff
 [push]
-	default = simple
+    default = simple
 [credential]
-	helper = osxkeychain
+    helper = osxkeychain
 [alias]
     l = log --pretty=oneline -n 20 --graph --abbrev-commit --decorate
     s = status -s
