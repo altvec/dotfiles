@@ -16,6 +16,19 @@ CODE=$HOME/Code
 DROPBOX=$HOME/Dropbox
 DOTFILES=$HOME/Code/dotfiles
 
+function link() {
+    from="$1"
+    to="$2"
+    echo "Linking '$from' to '$to'"
+    rm -f "$to"
+    ln -s "$from" "$to"
+}
+
+if [[ -d "$DROPBOX" ]]; then
+    echo "Looks like dropbox does not installed. Please install it first."
+    exit 1
+fi
+
 mkdir -p $CODE
 
 echo "Installing homebrew..."
