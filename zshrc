@@ -72,7 +72,7 @@ export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 export VIRTUALENV_DISTRIBUTE=true
 export PYTHONUNBUFFERED=true
 export PYTHONDONTWRITEBYTECODE=1
-export WORKON_HOME=$HOME/Code/envs
+export WORKON_HOME=$HOME/.python-venvs
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Node and NPM
