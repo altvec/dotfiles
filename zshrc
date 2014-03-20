@@ -44,7 +44,7 @@ source $ZSH/oh-my-zsh.sh
 export TERM="xterm-256color"
 export EDITOR="vim"
 export PATH=./bin:$PATH
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$PATH:/sbin
 
 # Postgres.app
