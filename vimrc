@@ -73,7 +73,7 @@ set t_Co=256
 
 " Gui settings
 if has("gui_running")
-    set guifont=Menlo:h12
+    set guifont=Menlo:h14
 endif
 
 " Auto reload .vimrc
