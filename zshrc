@@ -48,7 +48,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 export PATH=$PATH:/sbin
 
 # Postgres.app
-export PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
+export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
 
 # History
 SAVEHIST=10000
