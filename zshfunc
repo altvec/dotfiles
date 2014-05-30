@@ -40,6 +40,13 @@ function ram() {
         echo "First argument - pattern to grep from processes"
     else
         sum=0
+        # Ugly hack for Safari, sicne it uses separate processes for rendering
+        # webpages in opened tabs
+        if [[ "$app" == "safari" ]] || [[ "$app" == "Safari" ]]; then
+            for i in `ps aux | grep -i "$app\|com.apple.WebKit" | grep -v "grep" | awk '{ print $6 }'`; do
+                sum=$(($i + $sum))
+            done
+        fi
         for i in `ps aux | grep -i "$app" | grep -v "grep" | awk '{ print $6 }'`; do
             sum=$(($i + $sum))
         done
