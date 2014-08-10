@@ -5,8 +5,8 @@ ZSH=$HOME/Code/dotfiles/oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="kennethreitz"
-ZSH_THEME="minimal"
+ZSH_THEME="kennethreitz"
+#ZSH_THEME="minimal"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -73,8 +73,6 @@ export PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
 export VIRTUALENV_DISTRIBUTE=true
 export PYTHONUNBUFFERED=true
 export PYTHONDONTWRITEBYTECODE=1
-export WORKON_HOME=$HOME/.python-venvs
-source /usr/local/bin/virtualenvwrapper.sh
 
 # Node and NPM
 export PATH=$PATH:/usr/local/share/npm/bin

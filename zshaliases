@@ -6,7 +6,9 @@ alias cdd='cd -'
 alias psaux='ps aux | grep -v grep | grep -i'
 alias cl="clear"
 alias free="$HOME/Code/dotfiles/memreport.py"
-#alias subl='subl -w -n'
+
+# just for lulz
+alias bitch='sudo'
 
 # Python and venv
 alias mkvenv2="mkvirtualenv --python /usr/local/bin/python"
