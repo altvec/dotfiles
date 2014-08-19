@@ -12,9 +12,9 @@
 # non-zero status (see man 1 bash)
 set -e
 
-CODE=$HOME/Code
+CODE=$HOME/lib
 DROPBOX=$HOME/Dropbox
-DOTFILES=$HOME/Code/dotfiles
+DOTFILES=$HOME/lib/dotfiles
 
 function link() {
     from="$1"
@@ -70,7 +70,7 @@ cp $DROPBOX/Private/ssh/keys/srg.pub $HOME/.ssh/srg.pub
 
 # Git configs
 ln -s $DROPBOX/Private/gitconfig $HOME/.gitconfig
-ln -s $DOTFILES/.gitignore $HOME/.gitignore
+ln -s $DOTFILES/gitignore $HOME/.gitignore
 
 # AppleScripts
 ln -s $DROPBOX/Private/applescripts/*.applescript $HOME/Library/Scripts/

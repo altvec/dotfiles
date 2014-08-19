@@ -5,7 +5,7 @@ alias df='df -h'
 alias cdd='cd -'
 alias psaux='ps aux | grep -v grep | grep -i'
 alias cl="clear"
-alias free="$HOME/Code/dotfiles/memreport.py"
+alias free="$HOME/lib/dotfiles/memreport.py"
 
 # just for lulz
 alias bitch='sudo'
