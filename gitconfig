@@ -5,18 +5,22 @@
     diff = auto
     status = auto
     branch = auto
-    ui = true
+    ui = auto
     interactive = auto
 [core]
-    excludesfile = /Users/srg/.gitignore
+    excludesfile = ~/.gitignore
     editor = vim
-[merge]
-    tool = opendiff
+    autocrlf = input
 [push]
-    default = simple
+    default = current
 [credential]
     helper = osxkeychain
 [alias]
-    l = log --pretty=oneline -n 20 --graph --abbrev-commit --decorate
-    s = status -s
-    c = clone --recursive
+    sl = log --pretty=oneline -n 20 --graph --abbrev-commit --decorate
+    st = status -sb
+    ci = commit
+    co = checkout
+    br = branch
+    today = diff @(yesterday}.. --stat
+    unci = reset HEAD^
+    uncommit = reset HEAD^
