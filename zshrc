@@ -79,3 +79,6 @@ export NODE_PATH=/usr/local/lib/node_modules
 
 # Ruby stuff
 eval "$(rbenv init -)"
+
+# GoLang
+export GOPATH=$HOME/Go
