@@ -22,3 +22,8 @@ alias gitpo="git push origin"
 alias gitg="git log --oneline --graph"
 alias gituall="git submodule foreach git pull origin master"
 alias gitc="git clone"
+
+# GNU coreutils
+alias ls="ls --color=auto"
+alias l="ls -lAh"
+alias ll="ls -lh"

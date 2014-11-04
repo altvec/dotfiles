@@ -1,3 +1,8 @@
+LANG="ru_RU.UTF-8"
+LC_ALL="ru_RU.UTF-8"
+LC_CTYPE="ru_RU.UTF-8"
+LC_COLLATE="POSIX"
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/lib/dotfiles/oh-my-zsh
 
@@ -36,7 +41,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git brew python django pip osx colorize)
+plugins=(git brew python django pip osx colorize coreutils)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -49,6 +54,10 @@ export PATH=$PATH:/sbin
 
 # Postgres.app
 export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
+
+# Coreutils (you should run 'brew install coreutils' first)
+export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
+MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 # History
 SAVEHIST=10000
@@ -78,7 +87,10 @@ export PATH=$PATH:/usr/local/share/npm/bin
 export NODE_PATH=/usr/local/lib/node_modules
 
 # Ruby stuff
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 # GoLang
 export GOPATH=$HOME/Go
+
+# Some fun stuff
+fortune | cowsay | lolcat
