@@ -1,114 +1,123 @@
-" Pathogen On
-source ~/.vim/bundle/vim-pathogen/autoload/pathogen.vim
-
-filetype off
-execute pathogen#incubate()
-
+" Pathogen exec
+execute pathogen#infect()
+syntax on
 filetype plugin indent on
-set nocompatible
 
-" Backups
-set backup
-set noswapfile
-set undodir=~/.vim/tmp/undo//
-set backupdir=~/.vim/tmp/backup//
-set directory=~/.vim/tmp/swap//
-" Make those folders automatically if they don't already exist.
-if !isdirectory(expand(&undodir))
-    call mkdir(expand(&undodir), "p")
-endif
-if !isdirectory(expand(&backupdir))
-    call mkdir(expand(&backupdir), "p")
-endif
-if !isdirectory(expand(&directory))
-    call mkdir(expand(&directory), "p")
-endif
-
-" Basic stuff
-set encoding=utf-8
-set hidden
-set nowrap
-set tabstop=4
-set backspace=indent,eol,start
-set autoindent
-set copyindent
-set shiftwidth=4
-set shiftround
-set showmatch
-set ignorecase
-set smartcase
-set number
-set smarttab
-set hlsearch
-set incsearch
-set textwidth=79
-set nocursorline
-set nojoinspaces
-set cpoptions+=J
-set noswapfile
-set expandtab
-set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-set lazyredraw
-
-nnoremap ; :
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" ============================================================================== 
+" Basic settings
+" ============================================================================== 
+set nocompatible			" disable compatibility with old VI
 
 set ruler
-nnoremap K <nop>
+set showmode
+set showcmd
+set nobackup				" no backup files
+set nowritebackup			" no backup while editing file
+set noswapfile				" no swap files (it's almost 2015!)
+set t_Co=256				" 256 colors
 
-nnoremap <Space> za
-vnoremap <Space> za
+set smarttab
+set tabstop=8
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set wrap
 
-" Color scheme
-syntax on
-set background=dark
-let g:badwolf_tabline=2
-let g:badwolf_html_link_underline=0
-colorscheme badwolf
-set t_Co=256
-
-" Gui settings
-if has("gui_running")
-    set guifont=Menlo:h14
-endif
-
-" Auto reload .vimrc
-augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,.gvimrc,_gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
-
-au FileType javascript setlocal tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.html setlocal filetype=htmldjango
-au FileType htmldjango setlocal textwidth=0 tabstop=2 shiftwidth=2
-
-let g:vim_markdown_folding_disabled=1
-
-" Leader
-let mapleader = ","
+let mapleader = ","			" change leader from \ to ,
 let maplocalleader = "\\"
 
-" Easier split navigation
-" use ctrl-[hjkl] to select the active spilt
-nmap <silent> <c-k> :wincmd k<cr>
-nmap <silent> <c-j> :wincmd j<cr>
-nmap <silent> <c-h> :wincmd h<cr>
-nmap <silent> <c-l> :wincmd l<cr>
+set textwidth=80			" old standart :)
+set autoread				" reload files if they changed on disk
 
-" Easier tabs navigation
-" use <leader> + shift + '(' or ')'
-nnoremap <leader>( :tabprev<cr>
-nnoremap <leader>) :tabnext<cr>
+" ==============================================================================
+" GUI settings
+" ==============================================================================
+set ls=2				" always show statusbar
+set enc=utf-8				" UTF-8 as default encoding
+set colorcolumn=+1
 
-" NERDTree
-noremap <leader>t :NERDTreeToggle<cr>
+if has("mac")
+	set guifont=Monaco:h13
+	set fuoptions=maxvert,maxhorz
+else
+	set guifont=Monaco:h13
+endif
 
+set background=dark
+
+" --- Molokai colorscheme --- {
+"colorscheme molokai
+"let g:molokai_original = 1
+"let g:rehash256 = 1
+" }
+
+" --- Badwolf colorscheme --- {
+colorscheme badwolf
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 2
+" Turn off HTML link underlining
+let g:badwolf_html_link_underline = 0
+" }
+
+" ==============================================================================
+" Search settings
+" ==============================================================================
+set ignorecase
+set smartcase
+set incsearch                           " incremental search
+set hlsearch                            " highlight results
+set showmatch
+set gdefault
+
+" ==============================================================================
+" Languages support
+" ==============================================================================
+
+" --- Python ---
+autocmd FileType python setlocal expandtab 
+	\ shiftwidth=4 tabstop=8 softtabstop=4 
+	\ formatoptions+=croq smartindent 
+	\ cinwords=if,elif,else,for,while,try,exce,pt,finally,def,class,with
+
+" --- Ruby ---
+autocmd FileType ruby setlocal expandtab
+	\ shiftwidth=2 softtabstop=2 tabstop=2
+
+" --- Rust ---
+autocmd BufNewFile,BufRead *.rs setlocal ft=rust
+
+" --- HTML ---
+autocmd FileType html set omnifunc=htmlComplete#CompleteTags
+
+" --- Template Languages ---
+autocmd FileType html,xhtml,xml,htmldjando,htmljinja,eruby,mako 
+	\ setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd BufNewFile,BufRead *.rthml setlocal ft=eruby
+autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
+autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
+
+" --- CSS ---
+autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+" --- Puppet ---
+autocmd BufRead,BufNewFile *.pp set ft=puppet
+
+" ==============================================================================
+" Plugins: NERDTree
+" ==============================================================================
+noremap <F2> :NERDTreeToggle<CR>
+inoremap <F2> <ESC>:NERDTreeToggle<CR>
+let NERDTreeHighLightCursorline = 1
+let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$',
+			\ '.*.pid', 'db.db', '.*\.o$']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDChristmasTree = 1
 let NERDTreeChDirMode = 2
-let NERDTreeHighLightCursorline = 1
-let NERDTreeIgnore = ['.vim$', '\~S', '.*\.pyc$', 'db.db']
+let NERDTreeMapJumpFirstChild = 'gK'
+
+" ==============================================================================
+" Disable annoyances
+" ==============================================================================
+set visualbell t_vb=			" no visual bell
+set novisualbell			" no sound
