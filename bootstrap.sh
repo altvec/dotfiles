@@ -39,7 +39,8 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 export PATH=/usr/local/bin:$PATH
 
 echo "Installing necessary homebrew components..."
-brew install git openssl autoconf automake ssh-copy-id zsh ffmpeg
+brew install git openssl autoconf automake ssh-copy-id zsh ffmpeg pwgen
+brew install fortune cowsay
 
 echo "Installing Python..."
 brew install python
@@ -87,13 +88,18 @@ echo "Linking AppleScripts..."
 link $DROPBOX/Private/applescripts/*.applescript $HOME/Library/Scripts/
 
 # VIM
+brew install vim
 echo "Linking VIM configs..."
 link $DOTFILES/vimrc $HOME/.vimrc
 link $DOTFILES/vim $HOME/.vim
 
 # Tmux
+brew install tmux
 link $DOTFILES/tmux.conf $HOME/.tmux.conf
 
 # Ruby
+brew install rbenv ruby-build rbenv-default-gems rbenv-gem-rehash
 echo "Linking Ruby configs..."
 link $DOTFILES/.gemrc $HOME/.gemrc
+mkdir -p $HOME/.rbenv
+link $DOTFILES/rbenv/default-gems $HOME/.rbenv/default-gems
