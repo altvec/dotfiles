@@ -31,6 +31,9 @@ fi
 
 mkdir -p $CODE
 
+# Profile
+link $DOTFILES/profile $HOME/.profile
+
 echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 export PATH=/usr/local/bin:$PATH
@@ -43,44 +46,54 @@ brew install python
 
 echo "Installing pip and virtualenv..."
 easy_install pip
-pip install virtualenv virtualenvwrapper fabric pep8 flake8
+pip install virtualenv virtualenvwrapper fabric pep8 flake8 lolcat
 
 # Clone dotfiles repo
+echo "Cloning dotfiles repo..."
 git clone https://github.com/altvec/dotfiles.git $DOTFILES
 cd $DOTFILES
 
 # Updating submodules
+echo "Updating submodules..."
 git submodule init
 git submodule update
 
 # Link shell files and change default bash to ZSH
-ln -s $DOTFILES/zshrc $HOME/.zshrc
-ln -s $DOTFILES/zshaliases $HOME/.zshaliases
-ln -s $DOTFILES/zshfunc $HOME/.zshfunc
+link $DOTFILES/zshrc $HOME/.zshrc
+link $DOTFILES/zshaliases $HOME/.zshaliases
+link $DOTFILES/zshfunc $HOME/.zshfunc
+echo "==========================================================="
 echo "To change default shell to ZSH you should do the following:"
 echo "sudo echo 'Installed via homebrew' >> /etc/shells"
 echo "sudo echo '/usr/loca/bin/zsh' >> /etc/shells"
 echo "chsh -s /usr/local/bin/zsh"
+echo "==========================================================="
 
 # SSH configs
+echo "Copying SSH keys and config..."
 mkdir -p $HOME/.ssh
-ln -s $DROPBOX/Private/ssh/config $HOME/.ssh/config
-cp $DROPBOX/Private/ssh/keys/srg $HOME/.ssh/srg
-cp $DROPBOX/Private/ssh/keys/srg.pub $HOME/.ssh/srg.pub
+link $DROPBOX/Private/ssh/config $HOME/.ssh/config
+cp $DROPBOX/Private/ssh/keys/* $HOME/.ssh/
+chmod 700 $HOME/.ssh/
+chmod 600 $HOME/.ssh/*
 
 # Git configs
-ln -s $DROPBOX/Private/gitconfig $HOME/.gitconfig
-ln -s $DOTFILES/gitignore $HOME/.gitignore
+echo "Linking git config files..."
+link $DROPBOX/Private/gitconfig $HOME/.gitconfig
+link $DOTFILES/gitignore $HOME/.gitignore
 
 # AppleScripts
-ln -s $DROPBOX/Private/applescripts/*.applescript $HOME/Library/Scripts/
+echo "Linking AppleScripts..."
+link $DROPBOX/Private/applescripts/*.applescript $HOME/Library/Scripts/
 
 # VIM
-mkdir -p $DOTFILES/vim/tmp/swap
-mkdir -p $DOTFILES/vim/tmp/backup
-mkdir -p $DOTFILES/vim/tmp/undo
-ln -s $DOTFILES/vimrc $HOME/.vimrc
-ln -s $DOTFILES/vim $HOME/.vim
+echo "Linking VIM configs..."
+link $DOTFILES/vimrc $HOME/.vimrc
+link $DOTFILES/vim $HOME/.vim
+
+# Tmux
+link $DOTFILES/tmux.conf $HOME/.tmux.conf
 
 # Ruby
-ln -s $DOTFILES/.gemrc $HOME/.gemrc
+echo "Linking Ruby configs..."
+link $DOTFILES/.gemrc $HOME/.gemrc

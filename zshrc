@@ -55,10 +55,6 @@ export PATH=$PATH:/sbin
 # Postgres.app
 export PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
 
-# Coreutils (you should run 'brew install coreutils' first)
-export PATH=$(brew --prefix coreutils)/libexec/gnubin:$PATH
-MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
-
 # History
 SAVEHIST=10000
 HISTSIZE=10000
@@ -87,10 +83,7 @@ export PATH=$PATH:/usr/local/share/npm/bin
 export NODE_PATH=/usr/local/lib/node_modules
 
 # Ruby stuff
-#eval "$(rbenv init -)"
-
-# GoLang
-export GOPATH=$HOME/Go
+eval "$(rbenv init -)"
 
 # Some fun stuff
 fortune | cowsay | lolcat

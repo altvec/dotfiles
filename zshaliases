@@ -24,6 +24,6 @@ alias gituall="git submodule foreach git pull origin master"
 alias gitc="git clone"
 
 # GNU coreutils
-alias ls="ls --color=auto"
-alias l="ls -lAh"
-alias ll="ls -lh"
+#alias ls="ls --color=auto"
+#alias l="ls -lAh"
+#alias ll="ls -lh"
