@@ -24,7 +24,7 @@ function link() {
     ln -s "$from" "$to"
 }
 
-if [[ -d "$DROPBOX" ]]; then
+if [[ ! -d "$DROPBOX" ]]; then
     echo "Looks like dropbox does not installed. Please install it first."
     exit 1
 fi
@@ -35,7 +35,7 @@ mkdir -p $CODE
 link $DOTFILES/profile $HOME/.profile
 
 echo "Installing homebrew..."
-ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 export PATH=/usr/local/bin:$PATH
 
 echo "Installing necessary homebrew components..."
@@ -46,13 +46,26 @@ echo "Installing Python..."
 brew install python
 
 echo "Installing pip and virtualenv..."
-easy_install pip
-pip install virtualenv virtualenvwrapper fabric pep8 flake8 lolcat
+echo "THIS MAY FAIL MANY TIMES, SO RUN BY HANDS:"
+echo "pip install virtualenv fabric pep8 flake8 lolcat"
+
+# SSH configs
+echo "Copying SSH keys and configs..."
+mkdir -p $HOME/.ssh
+link $DROPBOX/Private/ssh/config $HOME/.ssh/config
+cp $DROPBOX/Private/ssh/keys/* $HOME/.ssh/
+chmod 700 $HOME/.ssh/
+chmod 600 $HOME/.ssh/*
 
 # Clone dotfiles repo
 echo "Cloning dotfiles repo..."
 git clone https://github.com/altvec/dotfiles.git $DOTFILES
 cd $DOTFILES
+
+# Git configs
+echo "Linking git config files..."
+link $DOTFILES/gitconfig $HOME/.gitconfig
+link $DOTFILES/gitignore $HOME/.gitignore
 
 # Updating submodules
 echo "Updating submodules..."
@@ -65,23 +78,10 @@ link $DOTFILES/zshaliases $HOME/.zshaliases
 link $DOTFILES/zshfunc $HOME/.zshfunc
 echo "==========================================================="
 echo "To change default shell to ZSH you should do the following:"
-echo "sudo echo 'Installed via homebrew' >> /etc/shells"
+echo "sudo echo '# Installed via homebrew' >> /etc/shells"
 echo "sudo echo '/usr/loca/bin/zsh' >> /etc/shells"
 echo "chsh -s /usr/local/bin/zsh"
 echo "==========================================================="
-
-# SSH configs
-echo "Copying SSH keys and config..."
-mkdir -p $HOME/.ssh
-link $DROPBOX/Private/ssh/config $HOME/.ssh/config
-cp $DROPBOX/Private/ssh/keys/* $HOME/.ssh/
-chmod 700 $HOME/.ssh/
-chmod 600 $HOME/.ssh/*
-
-# Git configs
-echo "Linking git config files..."
-link $DROPBOX/Private/gitconfig $HOME/.gitconfig
-link $DOTFILES/gitignore $HOME/.gitignore
 
 # AppleScripts
 echo "Linking AppleScripts..."
