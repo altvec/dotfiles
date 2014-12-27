@@ -3,25 +3,25 @@
 	url = git://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vim/bundle/badwolf"]
 	path = vim/bundle/badwolf
-	url = git@github.com:sjl/badwolf.git
+	url = git://github.com/sjl/badwolf.git
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
-	url = git@github.com:tpope/vim-pathogen.git
+	url = git://github.com/tpope/vim-pathogen.git
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
-	url = git@github.com:plasticboy/vim-markdown.git
+	url = git://github.com/plasticboy/vim-markdown.git
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
+	url = git://github.com/scrooloose/nerdtree.git
 [submodule "vim/bundle/molokai"]
 	path = vim/bundle/molokai
-	url = git@github.com:tomasr/molokai.git
+	url = git://github.com/tomasr/molokai.git
 [submodule "vim/bundle/tabular"]
 	path = vim/bundle/tabular
-	url = git@github.com:godlygeek/tabular.git
+	url = git://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/vim-puppet"]
 	path = vim/bundle/vim-puppet
-	url = git@github.com:rodjek/vim-puppet.git
+	url = git://github.com/rodjek/vim-puppet.git
 [submodule "vim/bundle/vim-ruby"]
 	path = vim/bundle/vim-ruby
-	url = git@github.com:vim-ruby/vim-ruby
+	url = git://github.com/vim-ruby/vim-ruby
