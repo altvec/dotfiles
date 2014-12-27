@@ -29,6 +29,7 @@ let maplocalleader = "\\"
 set textwidth=80			" old standart :)
 set autoread				" reload files if they changed on disk
 
+set backspace=indent,eol,start
 " ==============================================================================
 " GUI settings
 " ==============================================================================
@@ -38,7 +39,7 @@ set colorcolumn=+1
 
 if has("mac")
 	set guifont=Monaco:h13
-	set fuoptions=maxvert,maxhorz
+	"set fuoptions=maxvert,maxhorz
 else
 	set guifont=Monaco:h13
 endif
