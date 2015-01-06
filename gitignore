@@ -7,3 +7,4 @@ cache
 *.tmp
 *.bak
 *.log
+irssi/config
