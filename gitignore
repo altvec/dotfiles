@@ -8,3 +8,5 @@ cache
 *.bak
 *.log
 irssi/config
+.bundle
+.vagrant
