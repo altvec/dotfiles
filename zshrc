@@ -46,7 +46,7 @@ plugins=(git brew python django pip osx colorize vagrant)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 export EDITOR="vim"
 export PATH=./bin:$PATH
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
