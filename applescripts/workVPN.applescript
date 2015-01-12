@@ -5,13 +5,13 @@ tell application "System Events"
 	set CurrentClipboard to the clipboard as string
 	
 	-- set the clipboad to your password	
-	set the clipboard to (do shell script "cat '" & "/Users/srg/Dropbox/Private/work_VPN_pwd.txt" & "'")
+	set the clipboard to (do shell script "cat '" & "/Users/skali/Dropbox/Private/work_VPN_pwd.txt" & "'")
 	
 	-- start playing with the VPN
 	tell current location of network preferences
 		
 		-- set the name of the VPN service from your Network Settings
-		set VPNService to service "VPN (Cisco IPsec)"
+		set VPNService to service "vpn iptv work"
 		-- determine current VPN connection status
 		set isConnected to connected of current configuration of VPNService
 		
