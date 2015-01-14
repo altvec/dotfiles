@@ -30,6 +30,13 @@ set textwidth=80			" old standart :)
 set autoread				" reload files if they changed on disk
 
 set backspace=indent,eol,start
+
+" Habit breaking, habit making
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
 " ==============================================================================
 " GUI settings
 " ==============================================================================
