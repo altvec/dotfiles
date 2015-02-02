@@ -34,3 +34,6 @@
 [submodule "vim/bundle/html5"]
 	path = vim/bundle/html5
 	url = https://github.com/othree/html5.vim.git
+[submodule "vim/bundle/vim-rust"]
+	path = vim/bundle/vim-rust
+	url = https://github.com/wting/rust.vim.git
