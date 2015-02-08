@@ -54,17 +54,17 @@ endif
 set background=dark
 
 " --- Molokai colorscheme --- {
-"colorscheme molokai
-"let g:molokai_original = 1
-"let g:rehash256 = 1
+colorscheme molokai
+let g:molokai_original = 1
+let g:rehash256 = 1
 " }
 
 " --- Badwolf colorscheme --- {
-colorscheme badwolf
-let g:badwolf_darkgutter = 1
-let g:badwolf_tabline = 2
+" colorscheme badwolf
+" let g:badwolf_darkgutter = 1
+" let g:badwolf_tabline = 2
 " Turn off HTML link underlining
-let g:badwolf_html_link_underline = 0
+" let g:badwolf_html_link_underline = 0
 " }
 
 " ==============================================================================
@@ -88,6 +88,7 @@ autocmd FileType python setlocal expandtab
 	\ cinwords=if,elif,else,for,while,try,exce,pt,finally,def,class,with
 
 " --- Ruby ---
+autocmd BufNewFile,BufRead {Gemfile,Rakefile,Vagrantfile,config.ru} set ft=ruby
 autocmd FileType ruby setlocal expandtab
 	\ shiftwidth=2 softtabstop=2 tabstop=2
 
@@ -125,13 +126,19 @@ let NERDTreeChDirMode = 2
 let NERDTreeMapJumpFirstChild = 'gK'
 
 " Plugins: Syntastic
-let g:syntastic_enable_signs = 1
-let g:syntastic_python_checkers=["flake8"]
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_python_checkers=["flake8"]
+" 
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Plugins: Ctrl-P
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$\|\.hg$',
+    \ 'file': '\.so$\|\.pyc$\|\.DS_Store$'
+    \ }
 
 " ==============================================================================
 " Disable annoyances
