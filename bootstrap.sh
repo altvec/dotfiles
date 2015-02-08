@@ -73,9 +73,9 @@ git submodule init
 git submodule update
 
 # Link shell files and change default bash to ZSH
-link $DOTFILES/zshrc $HOME/.zshrc
-link $DOTFILES/zshaliases $HOME/.zshaliases
-link $DOTFILES/zshfunc $HOME/.zshfunc
+link $DOTFILES/.zshrc $HOME/.zshrc
+link $DOTFILES/.zlogin $HOME/.zlogin
+link $DOTFILES/.zsh $HOME/
 echo "==========================================================="
 echo "To change default shell to ZSH you should do the following:"
 echo "sudo echo '# Installed via homebrew' >> /etc/shells"
