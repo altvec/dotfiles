@@ -11,6 +11,8 @@ alias free='$HOME/lib/dotfiles/memreport.py'
 
 # Python
 alias serve='python -m SimpleHTTPServer'
+# Upgrade all pip packages
+alias pipup="pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | grep -v 'vboxapi' | xargs pip install -U"
 
 # Git
 alias gits='clear; git status'
