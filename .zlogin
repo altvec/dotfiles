@@ -1,6 +1,5 @@
 PATH=./bin:$PATH
 PATH=/usr/local/bin:/usr/local/sbin:$PATH
-PATH=/usr/local/share/python:$PATH
 PATH=$PATH:/sbin
 
 export LANG="en_US.UTF-8"
