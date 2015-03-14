@@ -45,10 +45,9 @@ set enc=utf-8				" UTF-8 as default encoding
 set colorcolumn=+1
 
 if has("mac")
-	set guifont=Monaco:h13
-	"set fuoptions=maxvert,maxhorz
+	set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
 else
-	set guifont=Monaco:h13
+	set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
 endif
 
 set background=dark
@@ -66,6 +65,16 @@ let g:rehash256 = 1
 " Turn off HTML link underlining
 " let g:badwolf_html_link_underline = 0
 " }
+
+" ==============================================================================
+" Airline settings
+" ==============================================================================
+let g:airline_theme = 'simple'
+let g:airline_powerline_fonts =1
+if !exists('g:airline_symbols')
+    let g:airline_symbols={}
+endif
+let g:airline_symbols.space = "\ua0"
 
 " ==============================================================================
 " Search settings
