@@ -45,12 +45,13 @@ set enc=utf-8				" UTF-8 as default encoding
 set colorcolumn=+1
 
 if has("mac")
-	set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
 else
-	set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
+    set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
 endif
 
-set background=dark
+set background=light
+colorscheme solarized
 
 " --- Molokai colorscheme --- {
 "colorscheme molokai
@@ -59,17 +60,17 @@ set background=dark
 " }
 
 " --- Badwolf colorscheme --- {
-colorscheme badwolf
-let g:badwolf_darkgutter = 1
-let g:badwolf_tabline = 2
+"colorscheme badwolf
+"let g:badwolf_darkgutter = 1
+"let g:badwolf_tabline = 2
 " Turn off HTML link underlining
-let g:badwolf_html_link_underline = 0
+"let g:badwolf_html_link_underline = 0
 " }
 
 " ==============================================================================
 " Airline settings
 " ==============================================================================
-let g:airline_theme = 'simple'
+let g:airline_theme = 'solarized'
 let g:airline_powerline_fonts =1
 if !exists('g:airline_symbols')
     let g:airline_symbols={}
