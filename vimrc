@@ -50,7 +50,7 @@ else
     set guifont=Ubuntu\ Mono\ derivative\ Powerline:h14
 endif
 
-set background=light
+set background=dark
 colorscheme solarized
 
 " --- Molokai colorscheme --- {
