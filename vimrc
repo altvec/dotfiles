@@ -53,17 +53,17 @@ endif
 set background=dark
 
 " --- Molokai colorscheme --- {
-colorscheme molokai
-let g:molokai_original = 1
-let g:rehash256 = 1
+"colorscheme molokai
+"let g:molokai_original = 1
+"let g:rehash256 = 1
 " }
 
 " --- Badwolf colorscheme --- {
-" colorscheme badwolf
-" let g:badwolf_darkgutter = 1
-" let g:badwolf_tabline = 2
+colorscheme badwolf
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 2
 " Turn off HTML link underlining
-" let g:badwolf_html_link_underline = 0
+let g:badwolf_html_link_underline = 0
 " }
 
 " ==============================================================================
