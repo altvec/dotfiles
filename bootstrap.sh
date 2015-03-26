@@ -43,7 +43,7 @@ brew install git openssl autoconf automake ssh-copy-id zsh ffmpeg pwgen
 brew install fortune cowsay
 
 echo "Installing Python..."
-brew install python
+brew install python python3
 
 echo "Installing pip and virtualenv..."
 echo "THIS MAY FAIL MANY TIMES, SO RUN BY HANDS:"
@@ -94,7 +94,7 @@ link $DOTFILES/vimrc $HOME/.vimrc
 link $DOTFILES/vim $HOME/.vim
 
 # Tmux
-brew install tmux
+brew install tmux reattach-to-user-namespace
 link $DOTFILES/tmux.conf $HOME/.tmux.conf
 
 # Ruby
@@ -103,3 +103,7 @@ echo "Linking Ruby configs..."
 link $DOTFILES/.gemrc $HOME/.gemrc
 mkdir -p $HOME/.rbenv
 link $DOTFILES/rbenv/default-gems $HOME/.rbenv/default-gems
+
+# Go
+brew install go
+mkdir -p $HOME/Projects/Go
