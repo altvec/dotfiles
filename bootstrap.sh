@@ -31,12 +31,8 @@ fi
 
 mkdir -p $CODE
 
-# Profile
-link $DOTFILES/profile $HOME/.profile
-
 echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-export PATH=/usr/local/bin:$PATH
 
 echo "Installing necessary homebrew components..."
 brew install git openssl autoconf automake ssh-copy-id zsh ffmpeg pwgen
@@ -61,6 +57,9 @@ chmod 600 $HOME/.ssh/*
 echo "Cloning dotfiles repo..."
 git clone https://github.com/altvec/dotfiles.git $DOTFILES
 cd $DOTFILES
+
+# Profile
+link $DOTFILES/profile $HOME/.profile
 
 # Git configs
 echo "Linking git config files..."
