@@ -15,6 +15,7 @@ set nobackup				" no backup files
 set nowritebackup			" no backup while editing file
 set noswapfile				" no swap files (it's almost 2015!)
 set t_Co=256				" 256 colors
+set cursorline                          " highlight cursor line
 
 set smarttab
 set tabstop=8
