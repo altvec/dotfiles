@@ -1,3 +1,6 @@
+fpath=(/usr/local/share/zsh-completions $fpath)
+fpath=(~/.zsh/completions/ $fpath)
+
 # fixme - the load process here seems a bit bizarre
 
 unsetopt menu_complete   # do not autoselect the first completion entry
@@ -63,6 +66,16 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 
 # ... unless we really want to.
 zstyle '*' single-ignored show
+
+zstyle ':completion:*::::' completer _expand _complete _ignored _approximate
+zstyle ':completion:*' menu select=1 _complete _ignored _approximate
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+# formatting and messages
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format 'No matches for: %d'
+zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
+zstyle ':completion:*' group-name ''
 
 if [ "x$COMPLETION_WAITING_DOTS" = "xtrue" ]; then
     expand-or-complete-with-dots() {
