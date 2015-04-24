@@ -6,15 +6,15 @@ filetype plugin indent on
 " ============================================================================== 
 " Basic settings
 " ============================================================================== 
-set nocompatible			" disable compatibility with old VI
+set nocompatible                        " disable compatibility with old VI
 
 set ruler
 set showmode
 set showcmd
-set nobackup				" no backup files
-set nowritebackup			" no backup while editing file
-set noswapfile				" no swap files (it's almost 2015!)
-set t_Co=256				" 256 colors
+set nobackup                            " no backup files
+set nowritebackup                       " no backup while editing file
+set noswapfile                          " no swap files (it's almost 2015!)
+set t_Co=256                            " 256 colors
 set cursorline                          " highlight cursor line
 
 set smarttab
@@ -24,11 +24,11 @@ set softtabstop=4
 set expandtab
 set wrap
 
-let mapleader = ","			" change leader from \ to ,
+let mapleader = ","                     " change leader from \ to ,
 let maplocalleader = "\\"
 
-set textwidth=80			" old standart :)
-set autoread				" reload files if they changed on disk
+set textwidth=80                        " old standart :)
+set autoread                            " reload files if they changed on disk
 
 set backspace=indent,eol,start
 
@@ -41,8 +41,8 @@ noremap <Right> <NOP>
 " ==============================================================================
 " GUI settings
 " ==============================================================================
-set ls=2				" always show statusbar
-set enc=utf-8				" UTF-8 as default encoding
+set ls=2                                " always show statusbar
+set enc=utf-8                           " UTF-8 as default encoding
 set colorcolumn=+1
 
 if has("mac")
@@ -154,5 +154,5 @@ let g:ctrlp_custom_ignore = {
 " ==============================================================================
 " Disable annoyances
 " ==============================================================================
-set visualbell t_vb=			" no visual bell
-set novisualbell			" no sound
+set visualbell t_vb=                    " no visual bell
+set novisualbell                        " no sound
