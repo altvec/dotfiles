@@ -35,7 +35,7 @@ echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing necessary homebrew components..."
-brew install git openssl autoconf automake ssh-copy-id zsh ffmpeg pwgen
+brew install git openssl autoconf automake ssh-copy-id zsh pwgen
 brew install fortune cowsay
 
 echo "Installing Python..."
