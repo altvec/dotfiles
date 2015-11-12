@@ -21,4 +21,5 @@ zstyle ':vcs_info:*' formats ':%b%c%u%f'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 precmd () { vcs_info }
 
-PROMPT='[%n@%m %~${vcs_info_msg_0_}] %{$reset_color%}'
+#PROMPT='[%n@%m %~${vcs_info_msg_0_}] %{$reset_color%}'
+PROMPT='%~${vcs_info_msg_0_} > %{$reset_color%}'
