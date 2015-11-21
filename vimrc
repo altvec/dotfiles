@@ -46,7 +46,7 @@ set enc=utf-8                           " UTF-8 as default encoding
 set colorcolumn=+1
 
 if has("mac")
-    set guifont=Source\ Code\ Pro:h14
+    set guifont=Source\ Code\ Pro\ Light:h14
 else
     set guifont=Source\ Code\ Pro:h14
 endif
