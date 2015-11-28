@@ -10,3 +10,4 @@ cache
 irssi/config
 .bundle
 .vagrant
+venv
