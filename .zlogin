@@ -1,6 +1,6 @@
-PATH=./bin:$PATH
-PATH=/usr/local/bin:/usr/local/sbin:$PATH
-PATH=$PATH:/sbin
+#PATH=./bin:$PATH
+#PATH=/usr/local/bin:/usr/local/sbin:$PATH
+#PATH=$PATH:/sbin
 
 # Go lang
 export PATH=$PATH:/usr/local/opt/go/libexec/bin

@@ -1,0 +1,46 @@
+[general]
+ui = TTY.TTYUI
+accounts = SergeyKalistratov
+pythonfile=~/.mutt/offlineimap.py
+fsync = False
+
+[Account SergeyKalistratov]
+localrepository = SergeyKalistratov-Local
+remoterepository = SergeyKalistratov-Remote
+status_backend = sqlite
+#postsynchook = notmuch new
+
+[Repository SergeyKalistratov-Local]
+type = Maildir
+localfolders = ~/.mail/sergeykalistratov.com
+nametrans = lambda folder: {'drafts': 'INBOX.Drafts',
+                            'archive': 'INBOX.Archive',
+                            'trash': 'INBOX.Trash',
+                            'sent': 'INBOX.Sent Items',
+                           }.get(folder, folder)
+
+[Repository SergeyKalistratov-Remote]
+maxconnections = 1
+type = IMAP
+remotehost = mail.messagingengine.com
+remoteuser = sergeykalistratov@fastmail.fm
+remotepasseval = get_keychain_pass(account="sergeykalistratov@fastmail.fm", server="mail.messagingengine.com")
+ssl = yes
+realdelete = no
+nametrans = lambda folder: {'INBOX.Drafts': 'drafts',
+                            'INBOX.Archive': 'archive',
+                            'INBOX.Trash': 'trash',
+                            'INBOX.Sent Items': 'sent',
+                           }.get(folder, folder)
+folderfilter = lambda folder: folder not in ['INBOX.Trash',
+                                             'INBOX.Junk Mail',
+                                             'INBOX.Personal',
+                                             'INBOX.Personal.Bills',
+                                             'INBOX.Personal.Bills.Apple',
+                                             'INBOX.Personal.Bills.DigitalOcean',
+                                             'INBOX.Personal.Bills.Microsoft',
+                                             'INBOX.Personal.Services Accounts',
+                                             'INBOX.Personal.Services Accounts.Coursera',
+                                             'INBOX.Python',
+                                            ]
+
