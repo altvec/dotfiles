@@ -71,7 +71,7 @@ let g:badwolf_html_link_underline = 0
 " ==============================================================================
 " Airline settings
 " ==============================================================================
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'badwolf'
 let g:airline_powerline_fonts =1
 if !exists('g:airline_symbols')
     let g:airline_symbols={}
@@ -150,6 +150,15 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$',
     \ 'file': '\.so$\|\.pyc$\|\.DS_Store$'
     \ }
+
+" Make sure Vim returns to the same line when you reopen a file.
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \       execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
 
 " ==============================================================================
 " Disable annoyances
