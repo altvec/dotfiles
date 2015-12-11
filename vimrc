@@ -48,7 +48,7 @@ set colorcolumn=+1
 if has("mac")
     set guifont=Source\ Code\ Pro\ Light:h14
 else
-    set guifont=Source\ Code\ Pro:h14
+    set guifont=Source\ Code\ Pro\ Light:h14
 endif
 
 set background=dark
