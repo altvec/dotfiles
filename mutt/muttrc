@@ -1,3 +1,5 @@
+# Thanks to Steve Losh for most of this config!
+
 # Paths (((
 
 set alias_file          = ~/.mutt/alias                         # where to store aliases
