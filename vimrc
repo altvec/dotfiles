@@ -1,7 +1,3 @@
-" Pathogen exec
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
 
 " ============================================================================== 
 " Basic settings
@@ -16,9 +12,14 @@ set nowritebackup                       " no backup while editing file
 set noswapfile                          " no swap files (it's almost 2015!)
 set t_Co=256                            " 256 colors
 set cursorline                          " highlight cursor line
+set hidden
+set ttyfast
+set relativenumber
+set undofile
+set title
 
 set smarttab
-set tabstop=8
+set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
@@ -27,7 +28,7 @@ set wrap
 let mapleader = ","                     " change leader from \ to ,
 let maplocalleader = "\\"
 
-set textwidth=80                        " old standart :)
+set textwidth=79                        " old standart :)
 set autoread                            " reload files if they changed on disk
 
 set backspace=indent,eol,start
@@ -43,7 +44,8 @@ noremap <Right> <NOP>
 " ==============================================================================
 set ls=2                                " always show statusbar
 set enc=utf-8                           " UTF-8 as default encoding
-set colorcolumn=+1
+set colorcolumn=85
+set formatoptions=qrn1
 
 if has("mac")
     set guifont=Source\ Code\ Pro\ Light:h14
@@ -150,6 +152,16 @@ let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|\.hg$',
     \ 'file': '\.so$\|\.pyc$\|\.DS_Store$'
     \ }
+
+" Plugins: tslime2
+let g:tslime2_ensure_trailing_newlines = 1
+let g:tslime_normal_mapping = '<localleader>T'
+let g:tslime_visual_mapping = '<localleader>t'
+let g:tslime_vars_mapping = '<localleader>t'
+
+" Plugins: ack
+nnoremap <leader>a :Ack!<space>
+let g:ackprg = 'ack --smart-case --nogroup --nocolor --column'
 
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
