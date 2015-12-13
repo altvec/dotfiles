@@ -46,3 +46,12 @@
 [submodule "vim/bundle/vim-go"]
 	path = vim/bundle/vim-go
 	url = https://github.com/fatih/vim-go
+[submodule "vim/bundle/ack"]
+	path = vim/bundle/ack
+	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/bundle/tslime2"]
+	path = vim/bundle/tslime2
+	url = https://github.com/sjl/tslime2.vim.git
+[submodule "vim/bundle/timl"]
+	path = vim/bundle/timl
+	url = https://github.com/tpope/timl.git
