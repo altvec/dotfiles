@@ -1,3 +1,7 @@
+" Pathongen exec
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
 
 " ============================================================================== 
 " Basic settings
