@@ -22,3 +22,6 @@ alias gitlg='git log --oneline --graph'
 alias gitpo='git push origin'
 alias gituall='git submodule foreach git pull origin master'
 alias gitc='git clone'
+
+# tmux
+alias tma='tmux attach -t dashboard || tmux new -s dashboard'

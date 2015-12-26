@@ -19,7 +19,7 @@ set cursorline                          " highlight cursor line
 set hidden
 set ttyfast
 set relativenumber
-set undofile
+"set undofile
 set title
 
 set smarttab
@@ -52,9 +52,9 @@ set colorcolumn=85
 set formatoptions=qrn1
 
 if has("mac")
-    set guifont=Source\ Code\ Pro\ Light:h14
+    set guifont=Menlo\ for\ Powerline:h12
 else
-    set guifont=Source\ Code\ Pro\ Light:h14
+    set guifont=Menlo\ for\ Powerline:h12
 endif
 
 set background=dark
@@ -123,7 +123,7 @@ autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
 autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
 
 " --- CSS ---
-autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType css setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 
 " --- Puppet ---
 autocmd BufRead,BufNewFile *.pp set ft=puppet

@@ -20,5 +20,5 @@ on appIsRunning(appName)
 end appIsRunning
 EOF)
 
-    echo '♫ ' $ITUNES_ARTIST '-' $ITUNES_TRACK
+    echo '♫' $ITUNES_ARTIST '-' $ITUNES_TRACK ' '
 fi
