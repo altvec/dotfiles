@@ -13,4 +13,4 @@ export PAGER=less
 export LC_TYPE=$LANG
 
 # crap
-fortune | cowsay | lolcat
+# fortune | cowsay | lolcat

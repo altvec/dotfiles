@@ -1,8 +1,4 @@
-LANG="ru_RU.UTF-8"
-LC_ALL="ru_RU.UTF-8"
-LC_CTYPE="ru_RU.UTF-8"
-LC_COLLATE="POSIX"
-export LANG
-export LC_ALL
-export LC_CTYPE
-export LC_COLLATE
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LC_COLLATE=POSIX

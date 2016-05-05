@@ -24,3 +24,7 @@
     today = diff @(yesterday}.. --stat
     unci = reset HEAD^
     uncommit = reset HEAD^
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
