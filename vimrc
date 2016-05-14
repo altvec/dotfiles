@@ -52,9 +52,9 @@ set colorcolumn=85
 set formatoptions=qrn1
 
 if has("mac")
-    set guifont=Menlo\ for\ Powerline:h12
+    set guifont=Fira\ Mono\ for\ Powerline:h12
 else
-    set guifont=Menlo\ for\ Powerline:h12
+    set guifont=Fira\ Mono\ for\ Powerline:h12
 endif
 
 set background=dark
