@@ -52,9 +52,9 @@ set colorcolumn=85
 set formatoptions=qrn1
 
 if has("mac")
-    set guifont=Fira\ Mono\ for\ Powerline:h12
+    set guifont=Fira\ Mono\ for\ Powerline:h14
 else
-    set guifont=Fira\ Mono\ for\ Powerline:h12
+    set guifont=Fira\ Mono\ for\ Powerline:h14
 endif
 
 set background=dark
@@ -77,7 +77,7 @@ let g:badwolf_html_link_underline = 0
 " ==============================================================================
 " Airline settings
 " ==============================================================================
-let g:airline_theme = 'badwolf'
+"let g:airline_theme = 'badwolf'
 let g:airline_powerline_fonts =1
 if !exists('g:airline_symbols')
     let g:airline_symbols={}
