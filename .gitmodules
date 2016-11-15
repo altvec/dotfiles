@@ -55,3 +55,6 @@
 [submodule "vim/bundle/timl"]
 	path = vim/bundle/timl
 	url = https://github.com/tpope/timl.git
+[submodule "emacs-prelude"]
+	path = emacs-prelude
+	url = https://github.com/bbatsov/prelude.git
