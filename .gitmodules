@@ -58,3 +58,6 @@
 [submodule "emacs-prelude"]
 	path = emacs-prelude
 	url = https://github.com/bbatsov/prelude.git
+[submodule "vim/bundle/airline-themes"]
+	path = vim/bundle/airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git

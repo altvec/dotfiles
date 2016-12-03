@@ -67,7 +67,7 @@ set background=dark
 " }
 
 " --- Badwolf colorscheme --- {
-colorscheme badwolf
+colorscheme goodwolf
 let g:badwolf_darkgutter = 1
 let g:badwolf_tabline = 2
 " Turn off HTML link underlining
@@ -77,11 +77,12 @@ let g:badwolf_html_link_underline = 0
 " ==============================================================================
 " Airline settings
 " ==============================================================================
-"let g:airline_theme = 'badwolf'
 let g:airline_powerline_fonts =1
 if !exists('g:airline_symbols')
     let g:airline_symbols={}
 endif
+let g:airline_theme = 'badwolf'
+let g:airline#extensions#syntastic#enabled = 0
 let g:airline_symbols.space = "\ua0"
 
 " ==============================================================================
