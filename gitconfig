@@ -31,7 +31,10 @@
 [alias]
 	slog = log --pretty=oneline -n 20 --graph --abbrev-commit --decorate
 	st = status -sb
+    stat = status
 	ci = commit
+    cm = commit -m
+    po = push origin
 	co = checkout
 	br = branch
 	today = diff @(yesterday}.. --stat
