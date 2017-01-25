@@ -11,4 +11,5 @@ irssi/config
 .bundle
 .vagrant
 venv
+.venv
 *.un~
