@@ -1,13 +1,19 @@
+set shell=/bin/bash\ --login
+
+filetype off
+
 " Pathongen exec
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
-" ============================================================================== 
+" =============================================================================
 " Basic settings
-" ============================================================================== 
+" =============================================================================
 set nocompatible                        " disable compatibility with old VI
 
+set modelines=0
+set autoindent
 set ruler
 set showmode
 set showcmd
@@ -21,13 +27,14 @@ set ttyfast
 set relativenumber
 "set undofile
 set title
-
+set lazyredraw
 set smarttab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 set wrap
+set linebreak
 
 let mapleader = ","                     " change leader from \ to ,
 let maplocalleader = "\\"
@@ -36,6 +43,9 @@ set textwidth=79                        " old standart :)
 set autoread                            " reload files if they changed on disk
 
 set backspace=indent,eol,start
+set list
+set listchars=tab:•\ ,eol:¬,extends:»,precedes:«
+set showbreak=↪
 
 " Habit breaking, habit making
 noremap <Up> <NOP>
@@ -43,7 +53,7 @@ noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
 
-" Quick window switching
+" Quick buffer switching
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -54,8 +64,33 @@ nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <leader>W <C-w>s
 nnoremap <leader>s :new<CR>
 
-" quit window on <leader>q
+" Quit window on <leader>q
 nnoremap <leader>q :q<CR>
+nnoremap K :q<CR>
+
+" Save
+nnoremap s :w<CR>
+
+" Toggle line numbers
+nnoremap <leader>n :setlocal number!<CR>
+
+" Sort lines
+"nnoremap <leader>s vip:!sort -f<CR>
+"nnoremap <leader>s :!sort -f<CR>
+
+" Tabs
+nnoremap <leader>( :tabprev<CR>
+nnoremap <leader>) :tabnext<CR>
+
+" Replace / substitute
+nnoremap <c-s> :%s/
+vnoremap <c-s> :s/
+
+" Window resizing
+nnoremap <m-right> :vertical resize +3<CR>
+nnoremap <m-left> :vertical resize -3<CR>
+nnoremap <m-up> :resize +3<CR>
+nnoremap <m-down> :resize -3<CR>
 
 " set working dir
 nnoremap <leader>. :lcd %p:h<CR>
@@ -96,7 +131,7 @@ let g:badwolf_html_link_underline = 0
 " ==============================================================================
 " Airline settings
 " ==============================================================================
-"let g:airline_powerline_fonts =1
+let g:airline_powerline_fonts = 0
 if !exists('g:airline_symbols')
     let g:airline_symbols={}
 endif
@@ -112,6 +147,11 @@ function! AirlineThemePatch(palette)
 endfunction
 
 let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#whitespace#checks = []
+let g:airline_section_y = airline#section#create_right(['%{printf("%s%s",&fenc,&ff!="unix"?":".&ff:"")}'])
+let g:airline_section_z = airline#section#create_right(['%3l:%2c'])
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#ctrlp#color_template = 'replace'
 
 " ==============================================================================
 " Search settings
@@ -149,10 +189,10 @@ augroup ft_csharp
 augroup END
 
 " --- Python ---
-autocmd FileType python setlocal expandtab 
-	\ shiftwidth=4 tabstop=8 softtabstop=4 
-	\ formatoptions+=croq smartindent 
-	\ cinwords=if,elif,else,for,while,try,exce,pt,finally,def,class,with
+autocmd FileType python setlocal expandtab
+    \ shiftwidth=4 tabstop=8 softtabstop=4
+    \ formatoptions+=croq smartindent
+    \ cinwords=if,elif,else,for,while,try,exce,pt,finally,def,class,with
 
 augroup ft_python
     au!
@@ -167,7 +207,7 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 autocmd BufNewFile,BufRead *.rs setlocal ft=rust
 
 " --- HTML ---
-autocmd FileType html set omnifunc=htmlComplete#CompleteTags
+"autocmd FileType html set omnifunc=htmlComplete#CompleteTags
 
 " --- JSON ---
 autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
@@ -181,8 +221,8 @@ autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabsto
 autocmd FileType javascript setlocal commentstring=//\ %s
 
 " --- Template Languages ---
-autocmd FileType html,xhtml,xml,htmldjando,htmljinja,eruby,mako 
-	\ setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html,xhtml,xml,htmldjando,htmljinja,eruby,mako
+    \ setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd BufNewFile,BufRead *.rthml setlocal ft=eruby
 autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
 autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
@@ -221,11 +261,11 @@ augroup END
 " ==============================================================================
 
 " use deoplete for Neovim
-"if has('nvim')
-"    let g:deoplete#enable_at_startup = 1
-"    let g:deoplete#ignore_sources = {}
-"    let g:deoplete#ignore_sources._ = ['buffer', 'member', 'tag', 'file']
-"endif
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+    let g:deoplete#ignore_sources = {}
+    let g:deoplete#ignore_sources._ = ['buffer', 'member', 'tag', 'file']
+endif
 
 " ==============================================================================
 " Plugins: NERDTree
@@ -234,8 +274,7 @@ nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
 let NERDTreeHighLightCursorline = 1
-let NERDTreeIgnore = ['.vim$', '\~$', '.*\.pyc$',
-			\ '.*.pid', 'db.db', '.*\.o$', '.DS_Store']
+let NERDTreeIgnore = ['.vim$','\~$','.*\.pyc$','.*.pid','db.db','.*\.o$','.DS_Store']
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDChristmasTree = 1
@@ -274,15 +313,23 @@ nnoremap <leader>a :Ack!<space>
 let g:ackprg = 'ack --smart-case --nogroup --nocolor --column'
 
 " Plugins: pymode
-"let g:pymode_rope = 0
+let g:pymode_rope = 0
+
 "let g:pymode_doc = 1
 "let g:pymode_doc_key = 'M'
 "let g:pydoc = 'pydoc'
-"let g:pymode_lint = 0
+let g:pymode_lint = 0
+let g:pymode_python = 'python'
 "let g:pymode_lint_checker = "pyflakes,pep8"
-"let g:pymode_virtualenv = 1
+"let g:pymode_virtualenv = 0
 "let g:pymode_syntax = 1
 "let g:pymode_syntax_all = 0
+"let g:pymode_syntax_builtin_objs = 1
+"let g:pymode_syntax_print_as_function = 0
+"let g:pymode_syntax_space_errors = 0
+"let g:pymode_run = 0
+"let g:pymode_breakpoint = 0
+"let g:pymode_utils_whitespaces = 0
 "let g:pymode_folding = 0
 
 
@@ -295,8 +342,35 @@ augroup line_return
         \ endif
 augroup END
 
+" Comments
+
+nmap <leader>c <Plug>CommentaryLine
+xmap <leader>c <Plug>Commentary
+
+augroup plugin_commentary
+    au!
+    au FileType htmldjango setlocal commentstring={#\ %s\ #}
+    au FileType clojurescript setlocal commentstring=;\ %s
+    au FileType lisp setlocal commentstring=;\ %s
+    au FileType puppet setlocal commentstring=#\ %s
+    au FileType fish setlocal commentstring=#\ %s
+    au FileType gnuplot setlocal commentstring=#\ %s
+    au FileType cs setlocal commentstring=//\ %s
+augroup END
+
+" ==============================================================================
+" NEOVIM
+" ==============================================================================
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " ==============================================================================
 " Disable annoyances
 " ==============================================================================
 set visualbell t_vb=                    " no visual bell
 set novisualbell                        " no sound
+
+" Quick editing
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>et :vsplit ~/.tmux.conf<CR>
+nnoremap <leader>ez :vsplit ~/.zshrc<CR>
