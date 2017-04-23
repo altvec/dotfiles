@@ -374,3 +374,4 @@ set novisualbell                        " no sound
 nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>et :vsplit ~/.tmux.conf<CR>
 nnoremap <leader>ez :vsplit ~/.zshrc<CR>
+nnoremap <leader>ef :vsplit ~/.config/fish/config.fish<CR>
