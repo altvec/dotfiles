@@ -5,6 +5,27 @@
 alias :q exit
 alias :qa exit
 
+# Functions ---
+function ef; nvim ~/.config/fish/config.fish; end
+function ev; nvim ~/.vimrc; end
+function ee; nvim ~/.spacemacs; end
+function pipupdate -d "Update Python's packages. Specify pip's version as ARGV1"
+    echo "Updating packages for PIP version $argv[1]"
+    if test $argv[1] -eq 2
+        pip2 freeze --local \
+        | grep -v '^\-e' \
+        | cut -d = -f 1 \
+        | grep -v 'vboxapi' \
+        | xargs pip2 install -U
+    else
+        pip3 freeze --local \
+        | grep -v '^\-e' \
+        | cut -d = -f 1 \
+        | grep -v 'vboxapi' \
+        | xargs pip3 install -U
+    end
+end
+
 set BROWSER open
 
 set -g -x fish_greeting ''
@@ -29,6 +50,7 @@ prepend_to_path "$HOME/lib/dotfiles/bin"
 prepend_to_path "$HOME/bin"
 prepend_to_path "$HOME/Library/Android/sdk/platform-tools"
 prepend_to_path "/usr/local/opt/go/libexec/bin"
+prepend_to_path "/usr/local/share/npm/bin"
 
 # Python ---
 set -g -x PIP_DOWNLOAD_CACHE "$HOME/.pip/cache"
@@ -36,6 +58,7 @@ set -g -x PIP_DOWNLOAD_CACHE "$HOME/.pip/cache"
 # Go ---
 set -g -x GOPATH "$HOME/lib/Go"
 
+set -g -x NODE_PATH "/usr/local/lib/node_modules"
 
 # Prompt ---
 set normal (set_color normal)
