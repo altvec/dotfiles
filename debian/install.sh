@@ -2,7 +2,7 @@
 
 ARCH=amd64
 OS=debian
-DISTR=stable
+DISTR=jessie
 
 TARGET=/mnt/debian
 export $TARGET
