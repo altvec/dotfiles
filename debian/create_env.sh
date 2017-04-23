@@ -2,7 +2,8 @@
 
 echo "Creating necessary dirs..."
 mkdir /mnt/debian
-mkdir /mnt/debian/{boot,home}
+mkdir /mnt/debian/boot
+mkdir /mnt/debian/home
 
 echo "Mounting filesystems..."
 mount /dev/sda1 /mnt/debian/boot

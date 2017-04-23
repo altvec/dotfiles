@@ -14,7 +14,7 @@ pvcreate /dev/sda2
 vgcreate vgstorage /dev/sda2
 lvcreate -L5G -n lvroot vgstorage
 lvcreate -L1G -n lvswap vgstorage
-lvcreate -L100%FREE -n lvhome vgstorage
+lvcreate -l100%FREE -n lvhome vgstorage
 vgchange -a y vgstorage
 
 
@@ -22,5 +22,6 @@ echo "Creating filesystems..."
 mkfs.ext2 /dev/sda1
 mkfs.ext4 /dev/vgstorage/lvroot
 mkfs.ext4 /dev/vgstorage/lvhome
+mkswap /dev/vgstorage/lvswap
 
 echo "Done."
