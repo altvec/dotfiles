@@ -4,6 +4,7 @@
 # Aliases ---
 alias :q exit
 alias :qa exit
+alias ec emacsclient
 
 # Functions ---
 function ef; nvim ~/.config/fish/config.fish; end
