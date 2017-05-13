@@ -91,6 +91,11 @@ function prompt_pwd --description 'Print the current working directory, shortend
     echo $PWD | sed -e "s|^$HOME|~|"
 end
 
+function virtualenv_prompt
+    if [ -n "$VIRTUAL_ENV" ]
+        printf '(%s) ' (basename "$VIRTUAL_ENV")
+    end
+end
 
 function fish_prompt
     set last_status $status
@@ -112,6 +117,7 @@ function fish_prompt
     
     printf '%s ' (__fish_git_prompt)
     echo
+    virtualenv_prompt
 
     if test $last_status -eq 0
         set_color white -o
