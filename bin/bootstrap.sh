@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # THIS IS WORK IN PROGRESS! BE VERY VERY CAREFUL!
 #
@@ -35,15 +35,10 @@ echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing necessary homebrew components..."
-brew install git openssl autoconf automake ssh-copy-id zsh pwgen
-brew install fortune cowsay zsh-completions
+brew install git autoconf automake ssh-copy-id pwgen fish vim httpie go ack
 
 echo "Installing Python..."
 brew install python python3
-
-echo "Installing pip and virtualenv..."
-echo "THIS MAY FAIL MANY TIMES, SO RUN BY HANDS:"
-echo "pip install virtualenv fabric pep8 flake8 lolcat"
 
 # SSH configs
 echo "Copying SSH keys and configs..."
@@ -60,6 +55,7 @@ cd $DOTFILES
 
 # Profile
 link $DOTFILES/profile $HOME/.profile
+link $DOTFILES/bash_profile $HOME/.bash_profile
 
 # Git configs
 echo "Linking git config files..."
@@ -72,22 +68,19 @@ git submodule init
 git submodule update
 
 # Link shell files and change default bash to ZSH
-link $DOTFILES/zshrc $HOME/.zshrc
-link $DOTFILES/zlogin $HOME/.zlogin
-link $DOTFILES/zsh $HOME/.zsh
+link $DOTFILES/fish $HOME/.config/fish
+#link $DOTFILES/zshrc $HOME/.zshrc
+#link $DOTFILES/zlogin $HOME/.zlogin
+#link $DOTFILES/zsh $HOME/.zsh
 echo "==========================================================="
-echo "To change default shell to ZSH you should do the following:"
+echo "To change default shell to Fish you should do the following:"
 echo "sudo echo '# Installed via homebrew' >> /etc/shells"
-echo "sudo echo '/usr/loca/bin/zsh' >> /etc/shells"
-echo "chsh -s /usr/local/bin/zsh"
+echo "sudo echo '/usr/loca/bin/fish' >> /etc/shells"
+echo "chsh -s /usr/local/bin/fish"
 echo "==========================================================="
 
-# AppleScripts
-echo "Linking AppleScripts..."
-link $DROPBOX/Private/applescripts/*.applescript $HOME/Library/Scripts/
 
 # VIM
-brew install vim
 echo "Linking VIM configs..."
 link $DOTFILES/vimrc $HOME/.vimrc
 link $DOTFILES/vim $HOME/.vim
@@ -96,13 +89,8 @@ link $DOTFILES/vim $HOME/.vim
 brew install tmux reattach-to-user-namespace
 link $DOTFILES/tmux.conf $HOME/.tmux.conf
 
-# Ruby
-brew install rbenv ruby-build rbenv-default-gems rbenv-gem-rehash
-echo "Linking Ruby configs..."
-link $DOTFILES/.gemrc $HOME/.gemrc
-mkdir -p $HOME/.rbenv
-link $DOTFILES/rbenv/default-gems $HOME/.rbenv/default-gems
-
 # Go
 brew install go
-mkdir -p $HOME/Projects/Go
+mkdir -p $HOME/lib/Go
+
+echo Completed.
