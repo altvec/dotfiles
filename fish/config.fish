@@ -55,10 +55,16 @@ prepend_to_path "/usr/local/share/npm/bin"
 
 # Python ---
 set -g -x PIP_DOWNLOAD_CACHE "$HOME/.pip/cache"
+set -g -x WORKON_HOME "$HOME/lib/virtualenvs"
+eval (python -m virtualfish)
 
 # Go ---
 set -g -x GOPATH "$HOME/lib/Go"
+set -g -x GOROOT "/usr/local/opt/go/libexec"
+prepend_to_path "$GOPATH/bin"
+prepend_to_path "$GOROOT/bin"
 
+# Node ---
 set -g -x NODE_PATH "/usr/local/lib/node_modules"
 
 # Prompt ---
