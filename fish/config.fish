@@ -4,12 +4,12 @@
 # Aliases ---
 alias :q exit
 alias :qa exit
-alias ec emacsclient
+alias e 'emacsclient -t'
+alias ec 'emacsclient -c'
 
 # Functions ---
 function ef; nvim ~/.config/fish/config.fish; end
 function ev; nvim ~/.vimrc; end
-function ee; nvim ~/.spacemacs; end
 function pipupdate -d "Update Python's packages. Specify pip's version as ARGV1"
     echo "Updating packages for PIP version $argv[1]"
     if test $argv[1] -eq 2
