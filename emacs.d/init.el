@@ -1,6 +1,5 @@
 ;; Emacs configuration file
 ;;
-;;
 
 ;; ---  Tweaks {{
 
@@ -13,16 +12,35 @@
 
 ;; --- }}
 
-
-;; MEPLA package-archive
+;; MEPLA package-archive and packages
 (require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
+;; Set PATH variable
+(exec-path-from-shell-copy-env "PATH")
+
+(when (not package-archive-contents)
+  (package-refresh-contents))
+
+(defvar myPack
+  '(better-defaults
+    exec-path-from-shell
+    evil
+    elpy
+    twilight-bright-theme
+    neotree))
+
+(mapc #'(lambda (package)
+	  (unless (package-installed-p package)
+	    (package-install package)))
+      myPack)
+
 ;; EVIL mode
-(require 'evil)
-(evil-mode 1)
+;(require 'evil)
+;(evil-mode 1)
+
 
 ;; Keys bindings
 ;; See http://whattheemacsd.com/ for details
@@ -43,18 +61,12 @@
 (require 'twilight-bright-theme)
 (load-theme 'twilight-bright t)
 
-;(require 'doom-themes)
-;(setq doom-themes-enable-bold t
-;      doom-themes-enable-italic t)
-;(load-theme 'doom-one t)
-;(doom-themes-visual-bell-config)
-;(doom-themes-org-config)
-;(add-hook 'find-file-hook 'doom-buffer-mode)
-
-(set-face-attribute 'default nil :family "Fira Mono")
+(set-face-attribute 'default nil :family "Fira Code")
 (setq-default line-spacing 3)
 (set-face-attribute 'default nil :height 120)
 (setq-default cursor-type 'bar)
+;; enable line numbers
+(global-linum-mode t)
 
 ;; --- }}
 
@@ -83,11 +95,21 @@
 (setq-default save-place t)
 (setq save-place-file (expand-file-name ".places" user-emacs-directory))
 
+;; Neotree
+(require 'neotree)
+(global-set-key [f8] 'neotree-toggle)
+
 ;; Join lines into one line
 (global-set-key (kbd "M-j")
 		(lambda ()
 		  (interactive)
 		  (join-line -1)))
+
+;; --- Python configuration {{{
+(elpy-enable)
+(elpy-use-ipython)
+;; --- }}}
+
 
 ;; =========================================
 ;; Various stuff atomatically added by Emacs
@@ -101,9 +123,7 @@
  '(custom-safe-themes
    (quote
     ("bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "59171e7f5270c0f8c28721bb96ae56d35f38a0d86da35eab4001aebbd99271a8" default)))
- '(package-selected-packages
-   (quote
-    (evil twilight-bright-theme doom-themes zenburn-theme atom-one-dark-theme))))
+ '(package-selected-packages (quote (company-jedi elpy evil twilight-bright-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

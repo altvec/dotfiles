@@ -1,9 +1,8 @@
-
 # locale settings 
 export LANG=en_US.UTF-8
 export LC_COLLATE=POSIX
 if [[ $(uname) == "Darwin" ]]; then
-    export LC_ALL=en_US.UTF-8
+    export LC_ALL=
     export LC_CTYPE=en_US.UTF-8
 fi
 
@@ -19,12 +18,12 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 export CLICOLOR=1
 
-# python stuff
+# Python stuff
 export PYTHONDONTWRITEBYTECODE=1
 export IGNOREEOF=1
 
 # Pretty man
-man() {
+function man {
     env \
     LESS_TERMCAP_md=$'\e[1;36m' \
     LESS_TERMCAP_me=$'\e[0m' \

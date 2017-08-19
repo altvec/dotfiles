@@ -27,22 +27,22 @@
 [diff]
 	algorithm = patience
 [credential]
-    helper = osxkeychain
+	helper = osxkeychain
 [alias]
-    slog = log --pretty=oneline -n 20 --graph --abbrev-commit --decorate
-    glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow) %d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	slog = log --pretty=oneline -n 20 --graph --abbrev-commit --decorate
+	glog = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow) %d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
 	st = status -sb
-    stat = status
+	stat = status
 	ci = commit
-    cm = commit -m
-    po = push origin
+	cm = commit -m
+	po = push origin
 	co = checkout
 	br = branch
 	today = diff @(yesterday}.. --stat
 	unci = reset HEAD^
 	uncommit = reset HEAD^
-    undo = reset --soft HEAD^
-    stash-all = stash save --include-untracked
+	undo = reset --soft HEAD^
+	stash-all = stash save --include-untracked
 [filter "lfs"]
 	smudge = git lfs smudge %f
 	required = true
