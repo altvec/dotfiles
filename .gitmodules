@@ -67,3 +67,6 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = git@github.com:robbyrussell/oh-my-zsh.git
+[submodule "vim/bundle/vim-pyte"]
+	path = vim/bundle/vim-pyte
+	url = git@github.com:therubymug/vim-pyte.git

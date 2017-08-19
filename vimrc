@@ -121,13 +121,14 @@ else
 endif
 
 " --- Badwolf colorscheme --- {
-set background=dark
-colorscheme goodwolf
-let g:badwolf_tabline = 2
+"set background=dark
+"colorscheme goodwolf
+"set g:badwolf_tabline = 2
 " Turn off HTML link underlining
-let g:badwolf_html_link_underline = 0
+"let g:badwolf_html_link_underline = 0
 " }
-
+set background=light
+colorscheme pyte
 " ==============================================================================
 " Airline settings
 " ==============================================================================
@@ -135,7 +136,7 @@ let g:airline_powerline_fonts = 0
 if !exists('g:airline_symbols')
     let g:airline_symbols={}
 endif
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'papercolor'
 let g:airline_theme_patch_func = 'AirlineThemePatch'
 
 function! AirlineThemePatch(palette)
