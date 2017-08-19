@@ -17,7 +17,7 @@
 ;; MEPLA package-archive
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
+	     '("melpa" . "https://melpa.org/packages/"))
 (package-initialize)
 
 ;; Keys bindings
@@ -34,8 +34,23 @@
       '((width . 92)
 	(height . 54)))
 
-;; Theme
-(load-theme 'zenburn t)
+;; --- Theme and Appearance {{
+;;(load-theme 'zenburn t)
+(require 'doom-themes)
+(setq doom-themes-enable-bold t
+      doom-themes-enable-italic t)
+
+(load-theme 'doom-one t)
+(doom-themes-visual-bell-config)
+(doom-themes-org-config)
+(add-hook 'find-file-hook 'doom-buffer-mode)
+
+(set-face-attribute 'default nil :family "Fira Mono")
+(setq-default line-spacing 3)
+(set-face-attribute 'default nil :height 120)
+(setq-default cursor-type 'bar)
+
+;; --- }}
 
 ;; Turn off mouse interface early in startup to avoid momentary display
 (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
@@ -80,7 +95,7 @@
  '(custom-safe-themes
    (quote
     ("bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "59171e7f5270c0f8c28721bb96ae56d35f38a0d86da35eab4001aebbd99271a8" default)))
- '(package-selected-packages (quote (zenburn-theme atom-one-dark-theme))))
+ '(package-selected-packages (quote (doom-themes zenburn-theme atom-one-dark-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -56,7 +56,6 @@ prepend_to_path "/usr/local/share/npm/bin"
 # Python ---
 set -g -x PIP_DOWNLOAD_CACHE "$HOME/.pip/cache"
 set -g -x WORKON_HOME "$HOME/lib/virtualenvs"
-eval (python -m virtualfish)
 
 # Go ---
 set -g -x GOPATH "$HOME/lib/Go"
@@ -97,10 +96,15 @@ function prompt_pwd --description 'Print the current working directory, shortend
     echo $PWD | sed -e "s|^$HOME|~|"
 end
 
-function virtualenv_prompt
-    if [ -n "$VIRTUAL_ENV" ]
-        printf '(%s) ' (basename "$VIRTUAL_ENV")
-    end
+# function virtualenv_prompt
+#     if [ -n "$VIRTUAL_ENV" ]
+#         printf '(%s) ' (basename "$VIRTUAL_ENV")
+#     end
+# end
+eval (python3 -m virtualfish)
+
+if set -q VIRTUAL_ENV
+    echo -n -s (set_color -b blue white) "(" (basename "$VIRTUALENV_ENV") ")" (set_color normal) " "
 end
 
 function fish_prompt
@@ -123,7 +127,7 @@ function fish_prompt
     
     printf '%s ' (__fish_git_prompt)
     echo
-    virtualenv_prompt
+    #virtualenv_prompt
 
     if test $last_status -eq 0
         set_color white -o
