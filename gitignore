@@ -13,3 +13,4 @@ irssi/config
 venv
 .venv
 *.un~
+*.el~

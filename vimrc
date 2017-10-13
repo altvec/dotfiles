@@ -3,8 +3,7 @@ set shell=/bin/bash\ --login
 filetype off
 
 " Pathongen exec
-execute pathogen#infect()
-syntax on
+call pathogen#infect()
 filetype plugin indent on
 
 " =============================================================================
@@ -120,6 +119,7 @@ else
     set mouse=a
 endif
 
+syntax on
 " --- Badwolf colorscheme --- {
 "set background=dark
 "colorscheme goodwolf

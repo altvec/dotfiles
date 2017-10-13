@@ -30,12 +30,15 @@
     evil
     elpy
     twilight-bright-theme
+    doom-themes
+    all-the-icons
     neotree))
 
 (mapc #'(lambda (package)
 	  (unless (package-installed-p package)
 	    (package-install package)))
       myPack)
+
 
 ;; EVIL mode
 ;(require 'evil)
@@ -57,7 +60,8 @@
 	(height . 54)))
 
 ;; --- Theme and Appearance {{
-; For somethin' more lightweight
+
+;; For somethin' more lightweight
 (require 'twilight-bright-theme)
 (load-theme 'twilight-bright t)
 
@@ -65,8 +69,30 @@
 (setq-default line-spacing 3)
 (set-face-attribute 'default nil :height 120)
 (setq-default cursor-type 'bar)
-;; enable line numbers
+
+
+;; Doom theme
+;(require 'doom-themes)
+;(setq doom-themes-enable-bold t
+;      doom-themes-enable-italic t)
+
+;; load theme
+;(load-theme 'doom-one t)
+;(add-hook 'find-file-hook 'doom-buffer-mode)  ; set doom-buffers to be 'brighter'
+;(defvar doom-ui-theme 'doom-one)
+
+;; enable flashig mode-line on errors
+;(doom-themes-visual-bell-config)
+
+;; enable custom neotree theme
+;;(require 'doom-neotree)
+;;(setq doom-neotree-enable-file-icons 'simple)
+
+;; enable line numbers and highlight the current line
 (global-linum-mode t)
+(global-hl-line-mode 1)
+
+(require 'all-the-icons)
 
 ;; --- }}
 
@@ -120,10 +146,47 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#FFFFFF" "#d15120" "#5f9411" "#d2ad00" "#6b82a7" "#a66bab" "#6b82a7" "#505050"])
+ '(ansi-term-color-vector
+   [unspecified "#FFFFFF" "#d15120" "#5f9411" "#d2ad00" "#6b82a7" "#a66bab" "#6b82a7" "#505050"])
  '(custom-safe-themes
    (quote
-    ("bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "59171e7f5270c0f8c28721bb96ae56d35f38a0d86da35eab4001aebbd99271a8" default)))
- '(package-selected-packages (quote (company-jedi elpy evil twilight-bright-theme))))
+    ("4182c491b5cc235ba5f27d3c1804fc9f11f51bf56fb6d961f94788be034179ad" "bfdcbf0d33f3376a956707e746d10f3ef2d8d9caa1c214361c9c08f00a1c8409" "59171e7f5270c0f8c28721bb96ae56d35f38a0d86da35eab4001aebbd99271a8" default)))
+ '(fci-rule-character-color "#d9d9d9")
+ '(fci-rule-color "#d9d9d9")
+ '(jdee-db-active-breakpoint-face-colors (cons "#1B2229" "#51afef"))
+ '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#98be65"))
+ '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#3f444a"))
+ '(menu-bar-mode nil)
+ '(org-fontify-done-headline t)
+ '(org-fontify-quote-and-verse-blocks t)
+ '(org-fontify-whole-heading-line t)
+ '(package-selected-packages
+   (quote
+    (racket-mode nlinum doom-themes company-jedi elpy evil twilight-bright-theme)))
+ '(vc-annotate-background "#1B2229")
+ '(vc-annotate-color-map
+   (list
+    (cons 20 "#98be65")
+    (cons 40 "#afaf6c")
+    (cons 60 "#d7af79")
+    (cons 80 "#ECBE7B")
+    (cons 100 "#f1a179")
+    (cons 120 "#e4946c")
+    (cons 140 "#da8548")
+    (cons 160 "#d78787")
+    (cons 180 "#d787af")
+    (cons 200 "#c678dd")
+    (cons 220 "#e479af")
+    (cons 240 "#f16c87")
+    (cons 260 "#ff6c6b")
+    (cons 280 "#bf5f5f")
+    (cons 300 "#7f5f5f")
+    (cons 320 "#3f5f5f")
+    (cons 340 "#5B6268")
+    (cons 360 "#5B6268")))
+ '(vc-annotate-very-old-color nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

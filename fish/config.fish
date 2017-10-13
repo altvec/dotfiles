@@ -17,9 +17,6 @@ set -gx fish_greeting ''
 # Set system editor to vim
 set -gx EDITOR vim
 
-# Set Go path
-set -gx GOPATH "$HOME/lib/Go"
-
 # Disable cowsay for ansible
 set -gx ANSIBLE_NOCOWS 1
 
@@ -32,5 +29,4 @@ prep_to_path "/usr/local/sbin"
 prep_to_path "/usr/local/MacGPG2/bin"
 prep_to_path "$HOME/bin"
 prep_to_path "$HOME/lib/dotfiles/bin"
-prep_to_path "$GOPATH/bin"
 
