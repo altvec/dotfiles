@@ -256,6 +256,14 @@ autocmd BufNewFile,BufRead *.go setlocal ft=go
 autocmd FileType erlang setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 autocmd BufNewFile,BufRead rebar.config setlocal ft=erlang
 
+" --- Common Lisp ---
+augroup ft_commonlisp
+    au!
+    au BufNewFile,BufRead *.asd,*.ros set filetype=lisp
+    au BufNewFile,BufRead *.paren set filetype=lisp
+    au BufNewFile,BufRead .abclrc set filetype=lisp
+augroup END
+
 " --- cmake ---
 autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
 
