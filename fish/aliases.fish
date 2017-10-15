@@ -3,6 +3,8 @@
 alias l 'ls -1'
 alias ll 'ls -alh'
 alias d 'du -sh'
+alias vim 'nvim'
+alias vi 'nvim'
 
 alias ec 'emacs -nw'
 alias em 'emacsclient -nc'
