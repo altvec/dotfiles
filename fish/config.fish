@@ -4,7 +4,7 @@
 . ~/.config/fish/functions/python.fish
 . ~/.config/fish/aliases.fish
 
-. ~/.config/fish/completions/*
+#. ~/.config/fish/completions/*
 
 # Set locales
 set -gx LANG en_US.UTF-8
