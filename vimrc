@@ -27,6 +27,8 @@ set relativenumber
 "set undofile
 set title
 set lazyredraw
+set matchtime=3
+set laststatus=2
 set smarttab
 set tabstop=4
 set shiftwidth=4
@@ -34,6 +36,10 @@ set softtabstop=4
 set expandtab
 set wrap
 set linebreak
+
+" Better completion
+set complete=.,w,b,u,t
+set completeopt=longest,menuone
 
 let mapleader = ","                     " change leader from \ to ,
 let maplocalleader = "\\"
@@ -119,25 +125,14 @@ else
     set mouse=a
 endif
 
+
 syntax on
 " --- Badwolf colorscheme --- {
-"set background=dark
-"colorscheme goodwolf
-"set g:badwolf_tabline = 2
-" Turn off HTML link underlining
-"let g:badwolf_html_link_underline = 0
+set background=dark
+colorscheme goodwolf
+let g:badwolf_tabline = 2
+let g:badwolf_html_link_underline = 0
 " }
-set background=light
-colorscheme PaperColor
-
-let g:PaperColor_Theme_Options = {
-    \ 'theme': {
-    \   'default': {
-    \     'transparent_background': 1
-    \   }
-    \ }
-\}
-
 
 " ==============================================================================
 " Airline settings
@@ -146,16 +141,16 @@ let g:airline_powerline_fonts = 0
 if !exists('g:airline_symbols')
     let g:airline_symbols={}
 endif
-let g:airline_theme = 'papercolor'
-" let g:airline_theme_patch_func = 'AirlineThemePatch'
+let g:airline_theme = 'badwolf'
+let g:airline_theme_patch_func = 'AirlineThemePatch'
 
-" function! AirlineThemePatch(palette)
-"     if g:airline_theme == 'badwolf'
-"         for colors in values (a:palette.inactive)
-"             let colors[2] = 15
-"         endfor
-"     endif
-" endfunction
+function! AirlineThemePatch(palette)
+    if g:airline_theme == 'badwolf'
+        for colors in values (a:palette.inactive)
+            let colors[2] = 15
+        endfor
+    endif
+endfunction
 
 let g:airline#extensions#syntastic#enabled = 0
 let g:airline#extensions#whitespace#checks = []
