@@ -4,7 +4,7 @@
 . ~/.config/fish/functions/python.fish
 . ~/.config/fish/aliases.fish
 
-#. ~/.config/fish/completions/*
+. ~/.config/fish/completions/*
 
 # Set locales
 set -gx LANG en_US.UTF-8
@@ -19,6 +19,9 @@ set -gx EDITOR vim
 
 # Disable cowsay for ansible
 set -gx ANSIBLE_NOCOWS 1
+
+# Pipenv shell vars
+set -gx PIPENV_SHELL_FANCY 1
 
 # Paths
 prep_to_path "/sbin"
