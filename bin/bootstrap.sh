@@ -34,50 +34,46 @@ mkdir -p $CODE
 echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-echo "Installing necessary homebrew components..."
-brew install git autoconf automake ssh-copy-id fish httpie
-brew install python3 sbcl
+echo "Installing software..."
+brew install git fish ssh-copy-id httpie python3 sbcl leiningen
 brew install emacs neovim fzf tmux reattach-to-user-namespace
+echo "... done."
 
-# SSH configs
 echo "Copying SSH keys and configs..."
 mkdir -p $HOME/.ssh
 link $DROPBOX/Private/ssh/config $HOME/.ssh/config
 cp $DROPBOX/Private/ssh/keys/* $HOME/.ssh/
 chmod 700 $HOME/.ssh/
 chmod 600 $HOME/.ssh/*
+echo "... done."
 
-# Clone dotfiles repo
 echo "Cloning dotfiles repo..."
 git clone https://github.com/altvec/dotfiles.git $DOTFILES
 cd $DOTFILES
-
-link $DOTFILES/profile $HOME/.profile
-link $DOTFILES/bash_profile $HOME/.bash_profile
-
-echo "Linking git config files..."
 link $DOTFILES/gitconfig $HOME/.gitconfig
 link $DOTFILES/gitignore $HOME/.gitignore
+echo "... done."
 
 echo "Updating submodules..."
 git submodule init
 git submodule update
+echo "... done."
 
+echo "Linking configs..."
+link $DOTFILES/profile $HOME/.profile
+link $DOTFILES/bash_profile $HOME/.bash_profile
 link $DOTFILES/fish $HOME/.config/fish
+link $DOTFILES/vimrc $HOME/.vimrc
+link $DOTFILES/vim $HOME/.vim
+link $DOTFILES/emacs.d $HOME/.emacs.d
+link $DOTFILES/tmux.conf $HOME/.tmux.conf
+link $DOTFILES/slate $HOME/.slate
+echo "... done."
+
 echo "==========================================================="
 echo "To change default shell to Fish you should do the following:"
-echo "sudo echo '# Installed via homebrew' >> /etc/shells"
 echo "sudo echo '/usr/loca/bin/fish' >> /etc/shells"
 echo "chsh -s /usr/local/bin/fish"
 echo "==========================================================="
 
-echo "Linking VIM configs..."
-link $DOTFILES/vimrc $HOME/.vimrc
-link $DOTFILES/vim $HOME/.vim
-
-link $DOTFILES/emacs.d $HOME/.emacs.d
-link $DOTFILES/tmux.conf $HOME/.tmux.conf
-link $DOTFILES/slate $HOME/.slate
-
 echo Completed.
-echo "Don't forget install slate"
