@@ -35,9 +35,9 @@ echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing necessary homebrew components..."
-brew install git autoconf automake ssh-copy-id fish vim httpie ack
-brew install python python3 sbcl
-brew install emacs tmux reattach-to-user-namespace
+brew install git autoconf automake ssh-copy-id fish httpie
+brew install python3 sbcl
+brew install emacs neovim fzf tmux reattach-to-user-namespace
 
 # SSH configs
 echo "Copying SSH keys and configs..."
