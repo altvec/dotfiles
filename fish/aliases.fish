@@ -5,6 +5,7 @@ alias ll 'ls -alh'
 alias d 'du -sh'
 alias vim 'nvim'
 alias vi 'nvim'
+alias cls 'clear'
 
 alias ec 'emacs -nw'
 alias em 'emacsclient -nc'
