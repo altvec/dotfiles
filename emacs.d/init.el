@@ -59,8 +59,17 @@
 (setq mac-option-modifier 'super)
 (setq ns-function-modifier 'hyper)
 
+;; Essentials
 ;; No splash sceen please
-(setq inhibit-startup-message t)
+(setq inhibit-startup-message t
+      inhibit-splash-screen t
+      inhibit-startup-echo-area-message t)
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(show-paren-mode 1)
+(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
+(setq-default left-fringe-width nil)
+(setq-default indicate-empty-lines t)
 
 ;; Initial window settings
 (setq initial-frame-alist
@@ -81,9 +90,11 @@
 
 (load-theme 'doom-molokai t)
 (add-hook 'find-file-hook 'solaire-mode)  ; set doom-buffers to be 'brighter'
-(defvar doom-ui-theme 'doom-molokai)
+;(defvar doom-ui-theme 'doom-dark)
 
 (doom-themes-visual-bell-config)
+(doom-themes-neotree-config)
+(doom-themes-org-config)
 
 ;; enable line numbers and highlight the current line
 (global-linum-mode t)
