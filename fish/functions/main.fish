@@ -16,4 +16,9 @@ function prep_to_path -d "Prepend the given dir to PATH if it exists and is not 
     end
 end
 
+function fish_user_key_bindings
+    bind \cn accept-autosuggestions
+    bind \cw backward-kill-word
+    bind \cf fzf-fish
+end
 

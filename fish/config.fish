@@ -23,6 +23,10 @@ set -gx ANSIBLE_NOCOWS 1
 # Pipenv shell vars
 set -gx PIPENV_SHELL_FANCY 1
 
+# FZF
+set -gx FZF_DEFAULT_COMMAND 'ffind'
+set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+
 # Paths
 prep_to_path "/sbin"
 prep_to_path "/usr/sbin"
