@@ -4,6 +4,7 @@ filetype off
 
 " Pathongen exec
 call pathogen#infect()
+call pathogen#helptags()
 filetype plugin indent on
 
 " =============================================================================
@@ -57,12 +58,18 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+nmap j gj
+nmap k gk
 
 " Quick buffer switching
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Move between the buffers
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprev<CR>
 
 " Split management
 nnoremap <leader>w <C-w>v<C-w>l
@@ -284,7 +291,7 @@ endif
 " ==============================================================================
 " Plugins: NERDTree
 " ==============================================================================
-nnoremap <leader>t :NERDTreeToggle<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
 let NERDTreeHighLightCursorline = 1
@@ -295,16 +302,6 @@ let NERDChristmasTree = 1
 let NERDTreeChDirMode = 2
 let NERDTreeMapJumpFirstChild = 'gK'
 
-" Plugins: Syntastic
-let g:syntastic_enable_signs = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_auto_jump = 0
-let g:syntastic_java_checker = 'javac'
-let g:syntastic_python_checkers=["python"]
-let g:syntastic_stl_format = '[%E{%e Errors}%B{, }%W{%w Warnings}]'
-
-nnoremap <leader>C :SyntasticCheck<CR>
 
 " Plugins: Ctrl-P
 let g:ctrlp_map = '<leader>o'
@@ -322,9 +319,6 @@ let g:tslime_normal_mapping = '<localleader>T'
 let g:tslime_visual_mapping = '<localleader>t'
 let g:tslime_vars_mapping = '<localleader>t'
 
-" Plugins: ack
-nnoremap <leader>a :Ack!<space>
-let g:ackprg = 'ack --smart-case --nogroup --nocolor --column'
 
 " Plugins: pymode
 let g:pymode_rope = 0
@@ -346,6 +340,24 @@ let g:pymode_python = 'python'
 "let g:pymode_utils_whitespaces = 0
 "let g:pymode_folding = 0
 
+
+" Plugins: ALE
+let g:ale_sign_warning = '▲'
+let g:ale_sign_error = '✗'
+highlight link ALEWarningSign String
+highlight link ALEErrorSugn Title
+
+
+" Plugins: fzf
+set rtp+=/usr/local/opt/fzf
+set rtp+=~/.fzf
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
+nmap <Leader>a :Ag<CR>
+
+" Tell ack.vim to use ag (The Silver Searcher) instead
+let g:ackprg = 'ag --vimgrep'
 
 " Make sure Vim returns to the same line when you reopen a file.
 augroup line_return
@@ -389,3 +401,8 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>et :vsplit ~/.tmux.conf<CR>
 nnoremap <leader>ez :vsplit ~/.zshrc<CR>
 nnoremap <leader>ef :vsplit ~/.config/fish/config.fish<CR>
+
+
+" ALE load all plugins
+packloadall
+silent! helptags ALL
