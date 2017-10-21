@@ -187,6 +187,14 @@ function! s:MaybeUpdateLightline()
 endfunction
 
 " ==============================================================================
+" Git stuff
+" ==============================================================================
+let g:gitgutter_sign_added = '∙'
+let g:gitgutter_sign_modified = '∙'
+let g:gitgutter_sign_removed = '∙'
+let g:gitgutter_sign_modified_removed = '∙'
+
+" ==============================================================================
 " Search settings
 " ==============================================================================
 set ignorecase
@@ -238,9 +246,6 @@ autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2 tabstop=2
 
 " --- Rust ---
 autocmd BufNewFile,BufRead *.rs setlocal ft=rust
-
-" --- HTML ---
-"autocmd FileType html set omnifunc=htmlComplete#CompleteTags
 
 " --- JSON ---
 autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
@@ -309,8 +314,10 @@ if has('nvim')
 endif
 
 " ==============================================================================
-" Plugins: NERDTree
+" Plugins
 " ==============================================================================
+
+" Plugins: NERDTree
 nnoremap <leader>e :NERDTreeToggle<CR>
 nnoremap <leader>f :NERDTreeFind<CR>
 
