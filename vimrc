@@ -132,39 +132,59 @@ else
     set mouse=a
 endif
 
-
 syntax on
-" --- Badwolf colorscheme --- {
 set background=dark
 colorscheme goodwolf
 let g:badwolf_tabline = 2
 let g:badwolf_html_link_underline = 0
-" }
 
 " ==============================================================================
-" Airline settings
+" Lightline
 " ==============================================================================
-let g:airline_powerline_fonts = 0
-if !exists('g:airline_symbols')
-    let g:airline_symbols={}
-endif
-let g:airline_theme = 'badwolf'
-let g:airline_theme_patch_func = 'AirlineThemePatch'
-
-function! AirlineThemePatch(palette)
-    if g:airline_theme == 'badwolf'
-        for colors in values (a:palette.inactive)
-            let colors[2] = 15
-        endfor
-    endif
+" Lightline
+let g:lightline = {
+\ 'colorscheme': 'wombat',
+\ 'active': {
+\   'left': [['mode', 'paste'], ['filename', 'modified']],
+\   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
+\ },
+\ 'component_expand': {
+\   'linter_warnings': 'LightlineLinterWarnings',
+\   'linter_errors': 'LightlineLinterErrors',
+\   'linter_ok': 'LightlineLinterOK'
+\ },
+\ 'component_type': {
+\   'readonly': 'error',
+\   'linter_warnings': 'warning',
+\   'linter_errors': 'error'
+\ },
+\ }
+function! LightlineLinterWarnings() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ◆', all_non_errors)
+endfunction
+function! LightlineLinterErrors() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '' : printf('%d ✗', all_errors)
+endfunction
+function! LightlineLinterOK() abort
+  let l:counts = ale#statusline#Count(bufnr(''))
+  let l:all_errors = l:counts.error + l:counts.style_error
+  let l:all_non_errors = l:counts.total - l:all_errors
+  return l:counts.total == 0 ? '✓ ' : ''
 endfunction
 
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#whitespace#checks = []
-let g:airline_section_y = airline#section#create_right(['%{printf("%s%s",&fenc,&ff!="unix"?":".&ff:"")}'])
-let g:airline_section_z = airline#section#create_right(['%3l:%2c'])
-let g:airline#extensions#hunks#non_zero_only = 1
-let g:airline#extensions#ctrlp#color_template = 'replace'
+" Update and show lightline but only if it's visible (e.g., not in Goyo)
+autocmd User ALELint call s:MaybeUpdateLightline()
+function! s:MaybeUpdateLightline()
+  if exists('#lightline')
+    call lightline#update()
+  end
+endfunction
 
 " ==============================================================================
 " Search settings
