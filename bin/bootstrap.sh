@@ -36,7 +36,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 echo "Installing software..."
 brew install git fish ssh-copy-id httpie python3 sbcl leiningen ffind
-brew install emacs neovim fzf tmux reattach-to-user-namespace the_silver_searcher
+brew install emacs neovim fzf tmux reattach-to-user-namespace the_silver_searcher pipenv
 echo "... done."
 
 echo "Copying SSH keys and configs..."
