@@ -2,6 +2,7 @@
 . ~/.config/fish/functions/main.fish
 . ~/.config/fish/themes/clearance.fish # prompt theme
 . ~/.config/fish/functions/python.fish
+. ~/.config/fish/functions/pretty_man.fish
 . ~/.config/fish/aliases.fish
 
 . ~/.config/fish/completions/*
