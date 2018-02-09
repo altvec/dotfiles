@@ -7,12 +7,17 @@ alias vim 'nvim'
 alias vi 'nvim'
 alias cls 'clear'
 
-alias ec 'emacs -nw'
-alias em 'emacsclient -nc'
+
+# Start emacs as daemon
+alias emd '/Applications/Emacs.app/Contents/MacOS/Emacs --daemon'
+# Emacs client using existing frame (if applicable)
+alias em '/Applications/Emacs.app/Contents/MacOS/bin/emacsclient --no-wait'
+# Emacs client in new frame
+alias emn '/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c --no-wait'
 
 alias prettyjson 'python -m json.tool'
 
 
-alias v 'vim'
-alias vf 'vim -nc ~/.config/fish/config.fish'
+alias v 'nvim'
+alias vf 'nvim -nc ~/.config/fish/config.fish'
 
