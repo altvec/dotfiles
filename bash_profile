@@ -10,3 +10,5 @@ alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias o='open'
 alias oo='open .'
+
+export PATH="$HOME/.cargo/bin:$PATH"

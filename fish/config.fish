@@ -28,6 +28,9 @@ set -gx PIPENV_SHELL_FANCY 1
 set -gx FZF_DEFAULT_COMMAND 'ffind'
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
+# Go workspace path
+set -x GOPATH "$HOME/.go"
+
 # Paths
 prep_to_path "/sbin"
 prep_to_path "/usr/sbin"
@@ -37,4 +40,6 @@ prep_to_path "/usr/local/sbin"
 prep_to_path "/usr/local/MacGPG2/bin"
 prep_to_path "$HOME/bin"
 prep_to_path "$HOME/lib/dotfiles/bin"
-
+prep_to_path "/usr/local/go/bin"
+prep_to_path "$GOPATH/bin"
+prep_to_path "$HOME/.cargo/bin"
