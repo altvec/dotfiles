@@ -1,16 +1,21 @@
-set shell=/bin/bash\ --login
+" Modeline and notes {
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmarker=marker
 
-filetype off
+" Basics {
+    set nocompatible                    " disable compatibility with old VI
+    set shell=/bin/bash\ --login        " set shell
+    filetype off
+" }
 
-" Pathongen exec
-call pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
+" Pathongen exec {
+    call pathogen#infect()
+    call pathogen#helptags()
+    filetype plugin indent on
+" }
 
 " =============================================================================
 " Basic settings
 " =============================================================================
-set nocompatible                        " disable compatibility with old VI
 
 set modelines=0
 set autoindent
@@ -25,7 +30,6 @@ set cursorline                          " highlight cursor line
 set hidden
 set ttyfast
 set relativenumber
-"set undofile
 set title
 set lazyredraw
 set matchtime=3
@@ -134,7 +138,7 @@ endif
 
 syntax on
 set background=dark
-colorscheme goodwolf
+colorscheme badwolf
 let g:badwolf_tabline = 2
 let g:badwolf_html_link_underline = 0
 
