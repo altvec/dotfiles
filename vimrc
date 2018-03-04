@@ -147,7 +147,7 @@ let g:badwolf_html_link_underline = 0
 " ==============================================================================
 " Lightline
 let g:lightline = {
-\ 'colorscheme': 'wombat',
+\ 'colorscheme': 'powerline',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['filename', 'modified']],
 \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
@@ -262,6 +262,18 @@ autocmd BufNewFile,BufRead *.sls setlocal ft=yaml
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal commentstring=//\ %s
 
+" --- Markdown ---
+autocmd FileType markdown setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+" Markdown could be more fruit salady
+highlight link markdownH1 PreProc
+highlight link markdownH2 PreProc
+highlight link markdownLink Character
+highlight link markdownBold String
+highlight link markdownItalic Statement
+highlight link markdownCode Delimiter
+highlight link markdownCodeBlock Delimiter
+highlight link markdownListMarker Todo
+
 " --- Template Languages ---
 autocmd FileType html,xhtml,xml,htmldjando,htmljinja,eruby,mako
     \ setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
@@ -323,16 +335,9 @@ endif
 
 " Plugins: NERDTree
 nnoremap <leader>e :NERDTreeToggle<CR>
-nnoremap <leader>f :NERDTreeFind<CR>
 
 let NERDTreeHighLightCursorline = 1
-let NERDTreeIgnore = ['.vim$','\~$','.*\.pyc$','.*.pid','db.db','.*\.o$','.DS_Store']
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let NERDChristmasTree = 1
-let NERDTreeChDirMode = 2
-let NERDTreeMapJumpFirstChild = 'gK'
-
+let NERDTreeIgnore = ['.vim$','\~$','.*\.pyc$','.*.pid','.*\.o$','.DS_Store']
 
 " Plugins: Ctrl-P
 let g:ctrlp_map = '<leader>o'
@@ -343,41 +348,11 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\.so$\|\.pyc$\|\.DS_Store$'
     \ }
 
-
-" Plugins: tslime2
-let g:tslime2_ensure_trailing_newlines = 1
-let g:tslime_normal_mapping = '<localleader>T'
-let g:tslime_visual_mapping = '<localleader>t'
-let g:tslime_vars_mapping = '<localleader>t'
-
-
-" Plugins: pymode
-let g:pymode_rope = 0
-
-"let g:pymode_doc = 1
-"let g:pymode_doc_key = 'M'
-"let g:pydoc = 'pydoc'
-let g:pymode_lint = 0
-let g:pymode_python = 'python'
-"let g:pymode_lint_checker = "pyflakes,pep8"
-"let g:pymode_virtualenv = 0
-"let g:pymode_syntax = 1
-"let g:pymode_syntax_all = 0
-"let g:pymode_syntax_builtin_objs = 1
-"let g:pymode_syntax_print_as_function = 0
-"let g:pymode_syntax_space_errors = 0
-"let g:pymode_run = 0
-"let g:pymode_breakpoint = 0
-"let g:pymode_utils_whitespaces = 0
-"let g:pymode_folding = 0
-
-
 " Plugins: ALE
 let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 highlight link ALEWarningSign String
 highlight link ALEErrorSugn Title
-
 
 " Plugins: fzf
 set rtp+=/usr/local/opt/fzf
@@ -400,7 +375,6 @@ augroup line_return
 augroup END
 
 " Comments
-
 nmap <leader>c <Plug>CommentaryLine
 xmap <leader>c <Plug>Commentary
 
@@ -432,7 +406,6 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>et :vsplit ~/.tmux.conf<CR>
 nnoremap <leader>ez :vsplit ~/.zshrc<CR>
 nnoremap <leader>ef :vsplit ~/.config/fish/config.fish<CR>
-
 
 " ALE load all plugins
 packloadall
