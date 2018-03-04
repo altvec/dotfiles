@@ -6,6 +6,7 @@ alias d 'du -sh'
 alias vim 'nvim'
 alias vi 'nvim'
 alias cls 'clear'
+alias pcat 'pygmentize -O style=monokai -f console256 -g'
 
 
 # Start emacs as daemon
