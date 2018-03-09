@@ -78,9 +78,9 @@
 
 
 ;; --- Theme and Appearance {{
-(set-face-attribute 'default nil :family "Operator Mono Light")
+(set-face-attribute 'default nil :family "Fira Code")
 (setq-default line-spacing 3)
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 130)
 (setq-default cursor-type 'bar)
 
 (require 'all-the-icons)
