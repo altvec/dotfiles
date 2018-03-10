@@ -84,6 +84,7 @@ link $DOTFILES/vim $HOME/.vim
 link $DOTFILES/emacs.d $HOME/.emacs.d
 link $DOTFILES/tmux.conf $HOME/.tmux.conf
 link $DOTFILES/slate $HOME/.slate
+ln -s ~/.vim ~/.config/nvim
 echo "... done."
 
 echo "==========================================================="

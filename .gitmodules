@@ -16,9 +16,6 @@
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
-[submodule "oh-my-zsh"]
-	path = oh-my-zsh
-	url = git@github.com:robbyrussell/oh-my-zsh.git
 [submodule "vim/bundle/vim-pyte"]
 	path = vim/bundle/vim-pyte
 	url = git@github.com:therubymug/vim-pyte.git
@@ -40,3 +37,9 @@
 [submodule "vim/bundle/deoplete-jedi"]
 	path = vim/bundle/deoplete-jedi
 	url = https://github.com/zchee/deoplete-jedi.git
+[submodule "vim/bundle/deoplete.nvim"]
+	path = vim/bundle/deoplete.nvim
+	url = https://github.com/Shougo/deoplete.nvim.git
+[submodule "vim/bundle/jedi-vim"]
+	path = vim/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim.git

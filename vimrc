@@ -414,8 +414,8 @@ augroup END
 " ==============================================================================
 " NEOVIM
 " ==============================================================================
-let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python2_host_prog = '/usr/loca/bin/python'
 
 " ==============================================================================
 " Disable annoyances
