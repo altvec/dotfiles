@@ -42,17 +42,20 @@ brew install git \
              node \
              fish \
              ssh-copy-id \
-             python3 \
+             python \
              pipenv \
              httpie \
              leiningen \
              ffind \
              fzf \
-             emacs \
              neovim \
              tmux \
              reattach-to-user-namespace \
              the_silver_searcher
+
+brew cask install emacs \
+                  iterm2 \
+                  font-fira-code
 echo "... done."
 
 echo "Copying SSH keys and configs..."
@@ -84,6 +87,7 @@ link $DOTFILES/vim $HOME/.vim
 link $DOTFILES/emacs.d $HOME/.emacs.d
 link $DOTFILES/tmux.conf $HOME/.tmux.conf
 link $DOTFILES/slate $HOME/.slate
+link $DOTFILES/agignore $HOME/.agignore
 ln -s ~/.vim ~/.config/nvim
 echo "... done."
 
