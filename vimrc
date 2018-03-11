@@ -291,7 +291,7 @@ autocmd FileType scss setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 autocmd BufRead,BufNewFile *.pp set ft=puppet
 
 " --- Go ---
-autocmd FileType go setlocal shiftwidth=4 tabstop=8 softtabstop=4 expandtab
+autocmd FileType go setlocal shiftwidth=4 tabstop=4 noexpandtab
 autocmd BufNewFile,BufRead *.go setlocal ft=go
 
 " --- Erlang ---
@@ -360,6 +360,18 @@ if isdirectory(expand("~/.vim/bundle/nerdtree"))
     nnoremap <leader>f :NERDTreeFind<CR>
 endif
 
+" Plugins: vim-go
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_command = "goimports"
+let g:go_fmt_options = {
+    \ 'goimports': '-local do/',
+    \ }
+let g:go_list_type = "quickfix"
+let g:go_auto_type_info = 0
+let g:go_auto_sameids = 0
+let g:go_def_mode = "guru"
+let g:go_echo_command_info = 1
+let g:go_autodetect_gopath = 1
 
 " Plugins: Ctrl-P
 let g:ctrlp_map = '<leader>o'
