@@ -15,14 +15,20 @@ set -gx LC_CTYPE en_US.UTF-8
 # Disable greeting
 set -gx fish_greeting ''
 
+# Better ls colors
+set -gx LSCOLORS gxfxcxdxbxegedabagacad
+
 # Set system editor to vim
 set -gx EDITOR vim
 
 # Disable cowsay for ansible
 set -gx ANSIBLE_NOCOWS 1
 
-# Pipenv shell vars
-set -gx PIPENV_SHELL_FANCY 1
+# Python and pipenv shell vars
+export PIPENV_SHELL_FANCY=1
+export PIPENV_MAX_SUBPROCESS=64
+export PIPENV_DEFAULT_PYTHON_VERSION=3.6
+export PYTHONDONTWRITEBYTECODE=1
 
 # FZF
 set -gx FZF_DEFAULT_COMMAND 'ffind'
