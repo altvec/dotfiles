@@ -138,7 +138,7 @@ endif
 
 syntax on
 set background=dark
-colorscheme badwolf
+colorscheme goodwolf
 let g:badwolf_tabline = 2
 let g:badwolf_html_link_underline = 0
 
@@ -326,6 +326,7 @@ if has('nvim')
     let g:deoplete#enable_at_startup = 1
     let g:deoplete#ignore_sources = {}
     let g:deoplete#ignore_sources._ = ['buffer', 'member', 'tag', 'file']
+    let g:deoplete#sources#jedi#python_path = '/usr/local/bin/python3'
 endif
 
 " ==============================================================================
@@ -427,7 +428,8 @@ augroup END
 " NEOVIM
 " ==============================================================================
 let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python2_host_prog = '/usr/loca/bin/python'
+"let g:python2_host_prog = '/usr/loca/bin/python'
+let g:jedi#force_py_version = 3
 
 " ==============================================================================
 " Disable annoyances
