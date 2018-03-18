@@ -31,6 +31,9 @@ fi
 
 mkdir -p $CODE
 
+echo "Installing Xcode command line tools..."
+xcode-select --install
+
 echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
@@ -39,10 +42,17 @@ brew install git \
              cmake \
              ctags \
              go \
+             dep \
              node \
              fish \
              ssh-copy-id \
+             heroku \
+             weechat \
              python \
+             python@2 \
+             ipython \
+             ansible \
+             pandoc \
              pipenv \
              httpie \
              leiningen \
@@ -51,8 +61,7 @@ brew install git \
              neovim \
              tmux \
              reattach-to-user-namespace \
-             the_silver_searcher \
-             ipython
+             the_silver_searcher
 
 brew cask install emacs \
                   iterm2 \
