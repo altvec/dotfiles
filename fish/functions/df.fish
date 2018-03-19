@@ -1,0 +1,1 @@
+/Users/skali/.config/fisherman/grc/functions/df.fish

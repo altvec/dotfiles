@@ -1,0 +1,1 @@
+/Users/skali/.config/fisherman/done/conf.d/done.fish

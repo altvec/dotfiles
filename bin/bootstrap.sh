@@ -61,7 +61,8 @@ brew install git \
              neovim \
              tmux \
              reattach-to-user-namespace \
-             the_silver_searcher
+             the_silver_searcher \
+             grc
 
 brew cask install emacs \
                   iterm2 \
