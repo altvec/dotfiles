@@ -35,7 +35,7 @@ echo "Installing Xcode command line tools..."
 xcode-select --install
 
 echo "Installing homebrew..."
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing software..."
 brew install git \
