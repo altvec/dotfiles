@@ -1,10 +1,6 @@
 # Source functions and aliases
-. ~/.config/fish/functions/main.fish
 . ~/.config/fish/themes/clearance.fish # prompt theme
-. ~/.config/fish/functions/python.fish
-. ~/.config/fish/functions/pretty_man.fish
 . ~/.config/fish/aliases.fish
-
 . ~/.config/fish/completions/*
 
 # Set locales
@@ -34,16 +30,23 @@ export PYTHONDONTWRITEBYTECODE=1
 set -gx FZF_DEFAULT_COMMAND 'ffind'
 set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
-# Go workspace path
-set -x GOPATH "$HOME/.go"
+# Key bindings
+function fish_user_key_bindings
+    bind \cw backward-kill-word
+    bind \cf fzf-fish
+end
 
 # Paths
-prep_to_path "/sbin"
-prep_to_path "/usr/sbin"
-prep_to_path "/bin"
-prep_to_path "/usr/local/bin"
-prep_to_path "/usr/local/sbin"
-prep_to_path "/usr/local/MacGPG2/bin"
+function prep_to_path -d "Prepend the given dir to PATH if it exists and is not already in it"
+    if test -d $argv[1]
+        if not contains $argv[1] $PATH
+            set -gx PATH "$argv[1]" $PATH
+        end
+    end
+end
+
+set -x GOPATH "$HOME/.go"
+
 prep_to_path "$HOME/bin"
 prep_to_path "$HOME/lib/dotfiles/bin"
 prep_to_path "/usr/local/go/bin"
