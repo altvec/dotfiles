@@ -1,39 +1,97 @@
-;; Emacs configuration file
+;; Emacs configuration file -*- no-byte-compile: t -*-
 ;;
 
-;; ---  Tweaks {{
+(setq
+ ;; User details
+ user-full-name "Sergey Kalistratov"
+ user-email-address "me@sergeykalistratov.com"
+ 
+ ;; Always load newest byte code
+ load-prefer-newer t
 
-;; Always load newest byte code
-(setq load-prefer-newer t)
+ ;; Reduce the frequency of garbage collection by making it happen on
+ ;; each 50MB of allocated data (the default is on every 0.76MB)
+ gc-cons-threshold 50000000
 
-;; Reduce the frequency of garbage collection by making it happen on
-;; each 50MB of allocated data (the default is on every 0.76MB)
-(setq gc-cons-threshold 50000000)
+ ;; Disable welcome screen and stuff
+ inhibit-startup-message t
+ inhibit-splash-screen t
+ inhibit-startup-echo-area-message t
 
-;; Don't litter my init file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file 'noerror)
+ ;; Don't attempt to load `default.el`
+ inhibit-default-init t
 
-;; --- }}
+ ;; Keys bindings
+ ;; See http://whattheemacsd.com/ for details
+ mac-command-modifier 'meta
+ mac-option-modifier 'super
+ ns-function-modifier 'hyper
+ mac-mouse-wheel-smooth-scroll t)
 
-;; MEPLA package-archive and packages
-(require 'package)
-(add-to-list 'package-archives
-	     '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
+;; Set default language
+(set-language-environment "utf-8")
 
-;; Set PATH variable
+(setq-default
+ ;; Don't crap in my init file
+ custom-file (locate-user-emacs-file "custom.el")
+
+ ;; Do not use tabs
+ indent-tabs-mode nil
+ ;; When using tabs (Go), make them 4 spaces long
+ tab-width 2
+ ;; Don't wrap long lines
+ truncate-lines t)
+
+
+;; UI
+;; Remove GUI elements
+(dolist (mode '(blink-cursor-mode
+                menu-bar-mode
+                tool-bar-mode
+                tooltip-mode
+                scroll-bar-mode))
+  (when (fboundp mode)
+    (funcall mode -1)))
+
+(setq
+ ;; No bells and whistles of any kind
+ ring-bell-function (lambda())
+ visible-bell nil
+
+ ;; Improved scrolling when using touchpad
+ mouse-wheel-follow-mouse 't
+ mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
+
+;; Packages
+(with-no-warnings
+  (require 'package))
+
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(package-initialize nil)
+
+(unless package-archive-contents
+  (package-refresh-contents))
+
+
+;; Set paths
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
+
 (exec-path-from-shell-copy-env "PATH")
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(setq default-directory (expand-file-name "~/"))
+(defconst local-temp-dir (expand-file-name (locate-user-emacs-file "temp"))
+  "Folder for temp files to be stored.")
+
 
 (defvar myPack
   '(better-defaults
+    auto-compile
     exec-path-from-shell
     evil
-    elpy
-    jedi
     twilight-bright-theme
     doom-themes
     solaire-mode
@@ -41,7 +99,6 @@
     neotree
     slime
     org-bullets
-    ob-ipython
     python-mode))
 
 (mapc #'(lambda (package)
@@ -53,19 +110,12 @@
 (require 'evil)
 (evil-mode 1)
 
-;; Keys bindings
-;; See http://whattheemacsd.com/ for details
-(setq mac-command-modifier 'meta)
-(setq mac-option-modifier 'super)
-(setq ns-function-modifier 'hyper)
+;; Auto-compile
+(require 'auto-compile)
+(auto-compile-on-load-mode 1)
+(auto-compile-on-save-mode 1)
 
 ;; Essentials
-;; No splash sceen please
-(setq inhibit-startup-message t
-      inhibit-splash-screen t
-      inhibit-startup-echo-area-message t)
-(menu-bar-mode -1)
-(tool-bar-mode -1)
 (show-paren-mode 1)
 (setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
 (setq-default left-fringe-width nil)
@@ -149,15 +199,6 @@
 		  (interactive)
 		  (join-line -1)))
 
-;; --- Python configuration {{{
-(require 'jedi)
-(add-to-list 'ac-sources 'ac-source-jedi-direct)
-(add-hook 'python-mode-hook 'jedi:setup)
-
-(elpy-enable)
-(elpy-use-ipython)
-;; --- }}}
-
 ;; --- LISP {{{
 (setq inferior-lisp-program "/usr/local/bin/sbcl")
 (setq slime-contrib '(slime-fancy))
@@ -165,12 +206,11 @@
 
 ;; --- Org mode {{{
 (require 'org-bullets)
-(require 'ob-ipython)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 (org-babel-do-load-languages
  'org-label-load-languages
- '((ipython . t)
+ '(
    (lisp . t)
    ))
 ;; --- }}}
