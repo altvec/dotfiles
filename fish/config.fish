@@ -1,5 +1,6 @@
 # Source functions and aliases
-. ~/.config/fish/themes/clearance.fish # prompt theme
+#. ~/.config/fish/themes/clearance.fish # prompt theme
+. ~/.config/fish/themes/tomita.fish
 . ~/.config/fish/aliases.fish
 . ~/.config/fish/completions/*
 
