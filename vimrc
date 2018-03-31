@@ -138,7 +138,7 @@ endif
 
 syntax on
 set background=dark
-colorscheme goodwolf
+colorscheme badwolf
 let g:badwolf_tabline = 2
 let g:badwolf_html_link_underline = 0
 
