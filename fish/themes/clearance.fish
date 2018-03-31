@@ -58,5 +58,5 @@ function fish_prompt
 
   # Terminate with a nice prompt char
   echo -e ''
-  echo -e -n -s $green '⨉⪧ ' $normal
+  echo -e -n -s $cyan '❯ ' $normal
 end
