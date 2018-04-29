@@ -137,16 +137,14 @@ else
 endif
 
 syntax on
-set background=dark
-colorscheme goodwolf
-let g:badwolf_tabline = 2
-let g:badwolf_html_link_underline = 0
+set background=light
+colorscheme Papercolor
 
 " ==============================================================================
 " Lightline
 " ==============================================================================
 let g:lightline = {
-\ 'colorscheme': 'powerline',
+\ 'colorscheme': 'PaperColor',
 \ 'active': {
 \   'left': [['mode', 'paste'], ['filename', 'modified']],
 \   'right': [['lineinfo'], ['percent'], ['readonly', 'linter_warnings', 'linter_errors', 'linter_ok']]
