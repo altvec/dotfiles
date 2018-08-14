@@ -3,7 +3,7 @@
 alias l 'ls -1'
 alias ll 'ls -alh'
 alias d 'du -sh'
-alias vim 'nvim'
+alias vim 'vim'
 alias vi 'vim'
 alias cls 'clear'
 alias pcat 'pygmentize -O style=monokai -f console256 -g'
