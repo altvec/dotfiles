@@ -47,7 +47,6 @@ brew install git \
              fish \
              ssh-copy-id \
              heroku \
-             weechat \
              python \
              python@2 \
              ipython \
@@ -58,14 +57,16 @@ brew install git \
              leiningen \
              ffind \
              fzf \
-             neovim \
+             vim \
              tmux \
              reattach-to-user-namespace \
              the_silver_searcher
 
 brew cask install emacs \
                   iterm2 \
-                  font-fira-code
+                  font-fira-code \
+                  java \
+                  karabiner-elements
 echo "... done."
 
 echo "Copying SSH keys and configs..."
