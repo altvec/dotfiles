@@ -16,6 +16,9 @@ CODE=$HOME/lib
 DROPBOX=$HOME/Dropbox
 DOTFILES=$HOME/lib/dotfiles
 
+mkdir -p $CODE
+mkdir -p $HOME/.emacs.d
+
 function link() {
     from="$1"
     to="$2"
@@ -28,8 +31,6 @@ if [[ ! -d "$DROPBOX" ]]; then
     echo "Looks like dropbox does not installed. Please install it first."
     exit 1
 fi
-
-mkdir -p $CODE
 
 echo "Installing Xcode command line tools..."
 xcode-select --install
@@ -64,7 +65,6 @@ brew install git \
 
 brew cask install emacs \
                   iterm2 \
-                  font-fira-code \
                   java \
                   karabiner-elements
 echo "... done."
@@ -95,11 +95,11 @@ link $DOTFILES/bash_profile $HOME/.bash_profile
 link $DOTFILES/fish $HOME/.config/fish
 link $DOTFILES/vimrc $HOME/.vimrc
 link $DOTFILES/vim $HOME/.vim
-link $DOTFILES/emacs.d $HOME/.emacs.d
+link $DOTFILES/emacs.d/init.el $HOME/.emacs.d/init.el
+link $DOTFILES/emacs.d/init.org $HOME/.emacs.d/init.org
 link $DOTFILES/tmux.conf $HOME/.tmux.conf
 link $DOTFILES/slate $HOME/.slate
 link $DOTFILES/agignore $HOME/.agignore
-ln -s ~/.vim ~/.config/nvim
 echo "... done."
 
 echo "==========================================================="
