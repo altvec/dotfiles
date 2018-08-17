@@ -7,6 +7,7 @@ alias vim 'vim'
 alias vi 'vim'
 alias cls 'clear'
 alias pcat 'pygmentize -O style=monokai -f console256 -g'
+alias ec 'emacs -nw'
 
 # Start emacs as daemon
 alias emd '/Applications/Emacs.app/Contents/MacOS/Emacs --daemon'
