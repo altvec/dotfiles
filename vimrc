@@ -91,3 +91,22 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 " ------------------------------------------------------------------ }
+
+" ----- Plugins -----
+"
+" Lightline
+
+let g:lightline = {
+  \  'active': {
+  \    'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
+  \    'right': [['lineinfo'], ['percent'], ['gitbranch', 'fileformat', 'fileencoding']]
+  \  },
+  \  'component_function': {
+  \    'gitbranch': 'gitbranch#name'
+  \  }
+  \ }
+
+" NERDTree
+
+map <C-o> :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
