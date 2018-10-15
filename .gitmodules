@@ -19,3 +19,6 @@
 [submodule "vim/bundle/vim-fireplace"]
 	path = vim/bundle/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace.git
+[submodule "vim/bundle/snow"]
+	path = vim/bundle/snow
+	url = https://github.com/nightsense/snow.git
