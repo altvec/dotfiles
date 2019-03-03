@@ -1,12 +1,8 @@
-# Source functions and aliases
-. ~/.config/fish/themes/clearance.fish # prompt theme
-. ~/.config/fish/aliases.fish
-. ~/.config/fish/completions/*
-
 # Set locales
 set -gx LANG en_US.UTF-8
 set -gx LC_COLLATE POSIX
 set -gx LC_CTYPE en_US.UTF-8
+set -gx LC_ALL en_US.UTF-8
 
 # Disable greeting
 set -gx fish_greeting ''
@@ -14,8 +10,18 @@ set -gx fish_greeting ''
 # Better ls colors
 set -gx LSCOLORS gxfxcxdxbxegedabagacad
 
-# Set system editor to vim
-set -gx EDITOR vim
+# Aliases
+alias l 'ls -1'
+alias ll 'ls -alh'
+alias vim 'nvim'
+alias vi 'nvim'
+alias cls 'clear'
+
+set BROWSER open
+
+set -gx EDITOR nvim
+set -gx COMMAND_MODE unix2003
+set -gx PAGER 'less -X'
 
 # Disable cowsay for ansible
 set -gx ANSIBLE_NOCOWS 1
@@ -47,9 +53,88 @@ end
 
 set -x GOPATH "$HOME/.go"
 
+prep_to_path "/usr/local/sbin"
 prep_to_path "$HOME/bin"
 prep_to_path "$HOME/lib/dotfiles/bin"
 prep_to_path "/usr/local/go/bin"
 prep_to_path "$GOPATH/bin"
 prep_to_path "$HOME/.cargo/bin"
-prep_to_path "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+prep_to_path "$HOME/Library/Python/2.7/bin"
+prep_to_path "$HOME/.poetry/bin"
+
+# Prompt {{{
+set normal (set_color normal)
+set magenta (set_color magenta)
+set yellow (set_color yellow)
+set green (set_color green)
+set cyan (set_color cyan)
+set gray (set_color -o black)
+
+function virtualenv_prompt
+    if [ -n "$VIRTUAL_ENV" ]
+        printf '(%s) ' (basename "$VIRTUAL_ENV")
+    end
+end
+
+function _git_branch_name
+    echo (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
+end
+
+function _git_is_dirty
+  echo (command git status -s --ignore-submodules=dirty ^/dev/null)
+end
+
+function git_prompt
+    if [ (_git_branch_name) ]
+        set -l git_branch (_git_branch_name)
+        if [ (_git_is_dirty) ]
+            set git_info '(' $magenta $git_branch "±" $normal ')'
+        else
+            set git_info '(' $green $git_branch $normal ')'
+        end
+        echo -n -s ' · ' $git_info $normal
+    end
+end
+
+function prompt_pwd -d 'Print the current working dir, shortened to fit the prompt'
+    echo $PWD | sed -e "s|^$HOME|~|"
+end
+
+function fish_prompt
+    set last_status $status
+    
+    echo
+    
+    set_color magenta
+    printf '%s' (whoami)
+    set_color normal
+    printf ' at '
+
+    set_color yellow
+    printf '%s' (hostname | cut -d . -f 1)
+    set_color normal
+    printf ' in '
+
+    set_color $fish_color_cwd
+    printf '%s' (prompt_pwd)
+    set_color normal
+
+    git_prompt
+
+    echo
+
+    virtualenv_prompt
+
+    if test $last_status -eq 0
+        set_color white -o
+        printf '><((°> '
+    else
+        set_color red -o
+        printf '[%d] ><((ˣ> ' $last_status
+    end
+
+    set_color normal
+end
+# }}}
+
+true

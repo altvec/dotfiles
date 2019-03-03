@@ -12,7 +12,7 @@ call pathogen#helptags()
 filetype plugin indent on
 set nocompatible
 
-" }}}
+" ------------------------------------------------------------------------- }}}
 
 " Basic options ----------------------------------------------------------- {{{
 "
@@ -149,13 +149,12 @@ endif
 " }}}
 
 " Color scheme {{{
+"
 syntax on
-set background=light
-colorscheme snow
+color dracula
+highlight Normal ctermbg=NONE
 " }}}
-
-" }}}
-
+" ------------------------------------------------------------------------- }}}
 
 " Convenience mappings ---------------------------------------------------- {{{
 "
@@ -181,7 +180,6 @@ nnoremap <m-down> :resize -3<CR>
 " }}}
 
 " Directional Keys {{{
-
 noremap j gj
 noremap k gk
 noremap gj j
@@ -214,8 +212,7 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 " }}}
 
-" }}}
-
+" ------------------------------------------------------------------------- }}}
 
 " Folding ----------------------------------------------------------------- {{{
 "
@@ -261,14 +258,19 @@ function! MyFoldText() " {{{
     return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
 endfunction " }}}
 set foldtext=MyFoldText()
-
 " }}}
-
 
 " Plugins ----------------------------------------------------------------- {{{
 "
-" Lightline {{{
+" FZF {{{
+set rtp+=/usr/local/opt/fzf
+nmap ; :Buffers<CR>
+nmap <Leader>t :Files<CR>
+nmap <Leader>r :Tags<CR>
+nmap <Leader>a :Ag<CR>
+" }}}
 
+" Lightline {{{
 let g:lightline = {
   \  'active': {
   \    'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
@@ -289,35 +291,4 @@ let NERDTreeChDirMode = 2
 let NERDTreeShowHidden = 1
 " }}}
 
-
-" Pulse Line {{{
-
-function! s:Pulse() " {{{
-    redir => old_hi
-        silent execute 'hi CursorLine'
-    redir END
-    let old_hi = split(old_hi, '\n')[0]
-    let old_hi = substitute(old_hi, 'xxx', '', '')
-
-    let steps = 8
-    let width = 1
-    let start = width
-    let end = steps * width
-    let color = 233
-
-    for i in range(start, end, width)
-        execute "hi CursorLine ctermbg=" . (color + i)
-        redraw
-        sleep 6m
-    endfor
-    for i in range(end, start, -1 * width)
-        execute "hi CursorLine ctermbg=" . (color + i)
-        redraw
-        sleep 6m
-    endfor
-
-    execute 'hi ' . old_hi
-endfunction " }}}
-command! -nargs=0 Pulse call s:Pulse()
-
-" }}}
+" ------------------------------------------------------------------------- }}}

@@ -64,9 +64,14 @@ brew install git \
              the_silver_searcher
 
 brew cask install emacs \
-                  iterm2 \
                   java \
-                  karabiner-elements
+                  karabiner-elements \
+                  racket \
+                  slack \
+                  slate \
+                  wireshark \
+                  transmission \
+                  iina
 echo "... done."
 
 echo "Copying SSH keys and configs..."
