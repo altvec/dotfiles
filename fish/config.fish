@@ -60,7 +60,7 @@ prep_to_path "/usr/local/go/bin"
 prep_to_path "$GOPATH/bin"
 prep_to_path "$HOME/.cargo/bin"
 prep_to_path "$HOME/Library/Python/2.7/bin"
-prep_to_path "$HOME/.poetry/bin"
+prep_to_path "$HOME/.composer/vendor/bin"
 
 # Prompt {{{
 set normal (set_color normal)
