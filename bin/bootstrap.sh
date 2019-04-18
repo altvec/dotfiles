@@ -61,7 +61,8 @@ brew install git \
              vim \
              tmux \
              reattach-to-user-namespace \
-             the_silver_searcher
+             the_silver_searcher \
+             pandoc
 
 brew cask install emacs \
                   java \
