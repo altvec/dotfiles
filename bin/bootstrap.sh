@@ -72,7 +72,8 @@ brew cask install emacs \
                   slate \
                   wireshark \
                   transmission \
-                  iina
+                  iina \
+                  keepingyouawake
 echo "... done."
 
 echo "Copying SSH keys and configs..."
