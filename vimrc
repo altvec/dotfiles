@@ -4,13 +4,72 @@
 
 " Preamble ---------------------------------------------------------------- {{{
 "
+
+setglobal nocompatible
+setglobal pastetoggle=<F2>
+
+let g:python_host_skip_check=1
+let g:loaded_python3_provider=1
+
 set shell=/bin/bash\ --login
 
-filetype off
-call pathogen#infect()
-call pathogen#helptags()
-filetype plugin indent on
-set nocompatible
+" Install plugins manager
+"
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+" Install plugins
+"
+
+Plug 'scrooloose/nerdtree'
+Plug 'w0rp/ale'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'honza/vim-snippets'
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdtree'
+Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+let g:coc_global_extensions = [
+      \ 'coc-tsserver',
+      \ 'coc-html',
+      \ 'coc-lists',
+      \ 'coc-phpls',
+      \ 'coc-sh',
+      \ 'coc-css',
+      \ 'coc-stylelint',
+      \ 'coc-vimlsp',
+      \ 'coc-go',
+      \ 'coc-elixir',
+      \ 'coc-json',
+      \ 'coc-eslint',
+      \ 'coc-python',
+      \ 'coc-java',
+      \ 'coc-jest',
+      \ 'coc-solargraph',
+      \ 'coc-yaml',
+      \ 'coc-highlight',
+      \ 'coc-snippets',
+      \ 'coc-docker',
+      \ 'coc-diagnostic',
+      \]
+
+call plug#end()
+
 
 " ------------------------------------------------------------------------- }}}
 
@@ -151,7 +210,8 @@ endif
 " Color scheme {{{
 "
 syntax on
-color dracula
+color solarized
+set background=light
 highlight Normal ctermbg=NONE
 " }}}
 " ------------------------------------------------------------------------- }}}
@@ -198,7 +258,7 @@ nmap <C-p> :bprev<CR>
 " Split management
 nnoremap <leader>w <C-w>v<C-w>l         " vertical split
 nnoremap <leader>W <C-w>s               " horizontal split
-nnoremap <leader>s :new<CR>             " horizontal split to new file 
+nnoremap <leader>s :new<CR>             " horizontal split to new file
 
 nnoremap <leader>q :q<CR>               " quit window on leader
 
@@ -271,6 +331,7 @@ nmap <Leader>a :Ag<CR>
 " }}}
 
 " Lightline {{{
+set background=light
 let g:lightline = {
   \  'active': {
   \    'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
@@ -279,7 +340,7 @@ let g:lightline = {
   \  'component_function': {
   \    'gitbranch': 'gitbranch#name'
   \  },
-  \  'colorscheme': 'dracula',
+  \  'colorscheme': 'solarized'
   \ }
 " }}}
 
