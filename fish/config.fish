@@ -16,6 +16,7 @@ alias ll 'ls -alh'
 alias vim 'nvim'
 alias vi 'nvim'
 alias cls 'clear'
+#alias poetry 'python3 $HOME/.poetry/bin/poetry'
 
 set BROWSER open
 
@@ -31,6 +32,11 @@ export PIPENV_SHELL_FANCY=1
 export PIPENV_MAX_SUBPROCESS=64
 export PIPENV_DEFAULT_PYTHON_VERSION=3.7
 export PYTHONDONTWRITEBYTECODE=1
+
+# zlib
+set -gx LDFLAGS "-L/usr/local/opt/zlib/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/zlib/include"
+set -gx PKG_CONFIG_PATH "/usr/local/opt/zlib/lib/pkgconfig"
 
 # FZF
 set -gx FZF_DEFAULT_COMMAND 'ffind'
@@ -60,6 +66,8 @@ prep_to_path "/usr/local/go/bin"
 prep_to_path "$GOPATH/bin"
 prep_to_path "$HOME/.cargo/bin"
 prep_to_path "$HOME/Library/Python/2.7/bin"
+prep_to_path "$HOME/Library/Python/3.7/bin"
+prep_to_path "$HOME/.poetry/bin"
 prep_to_path "$HOME/.composer/vendor/bin"
 
 # Prompt {{{
@@ -102,9 +110,9 @@ end
 
 function fish_prompt
     set last_status $status
-    
+
     echo
-    
+
     set_color magenta
     printf '%s' (whoami)
     set_color normal
@@ -126,15 +134,18 @@ function fish_prompt
     virtualenv_prompt
 
     if test $last_status -eq 0
-        set_color white -o
-        printf '><((°> '
+        set_color green -o
+        printf '> '
     else
         set_color red -o
-        printf '[%d] ><((ˣ> ' $last_status
+        printf '[%d] x ' $last_status
     end
 
     set_color normal
 end
 # }}}
+
+# Pyenv
+status --is-interactive; and source (pyenv init - | psub)
 
 true
