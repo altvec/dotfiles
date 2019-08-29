@@ -34,6 +34,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -69,8 +70,6 @@ let g:coc_global_extensions = [
       \]
 
 call plug#end()
-
-
 " ------------------------------------------------------------------------- }}}
 
 " Basic options ----------------------------------------------------------- {{{
@@ -130,25 +129,23 @@ au FocusLost * :silent! wall
 let mapleader = ","
 let maplocalleader = "\\"
 
-" Cursorline {{{
+" Cursorline
 " Only show cursorline in the current window and in normal mode.
 augroup cline
     au!
     au WinLeave,InsertEnter * set nocursorline
     au WinEnter,InsertLeave * set cursorline
 augroup END
-" }}}
 
-"Trailing whitespace {{{
+"Trailing whitespace
 " Only show when not in insert mode.
 augroup trailing
     au!
     au InsertEnter * :set listchars-=trail:⌴
     au InsertLeave * :set listchars+=trail:⌴
 augroup END
-" }}}
 
-" Wildmenu completion {{{
+" Wildmenu completion
 set wildmenu
 set wildmode=list:longest
 set wildignore+=.hg,.git,.svn                    " Version control
@@ -164,9 +161,8 @@ set wildignore+=*.orig                           " Merge resolution files
 " Clojure/Leiningen
 set wildignore+=classes
 set wildignore+=lib
-" }}}
 
-" Line Return {{{
+" Line Return
 " Make sure VIM returns to the same line when you reopen a file.
 augroup line_return
     au!
@@ -175,9 +171,8 @@ augroup line_return
                 \       execute 'normal! g`"zvzz' |
                 \ endif
 augroup END
-" }}}
 
-" Tabs, spaces, wrapping {{{
+" Tabs, spaces, wrapping
 set tabstop=8
 set shiftwidth=4
 set softtabstop=4
@@ -186,9 +181,8 @@ set wrap
 set textwidth=80
 set formatoptions=qrn1j
 set colorcolumn=+1
-" }}}
 
-" Backups {{{
+" Backups
 set backup
 set noswapfile
 set undodir=~/.vim/tmp/undo//     " undo files
@@ -205,15 +199,13 @@ endif
 if !isdirectory(expand(&directory))
     call mkdir(expand(&directory), "p")
 endif
-" }}}
 
-" Color scheme {{{
+" Color scheme
 "
 syntax on
 color solarized
 set background=light
 highlight Normal ctermbg=NONE
-" }}}
 " ------------------------------------------------------------------------- }}}
 
 " Convenience mappings ---------------------------------------------------- {{{
@@ -237,9 +229,7 @@ nnoremap <m-left> :vertical resize -3<CR>
 nnoremap <m-up> :resize +3<CR>
 nnoremap <m-down> :resize -3<CR>
 
-" }}}
-
-" Directional Keys {{{
+" Directional Keys
 noremap j gj
 noremap k gk
 noremap gj j
@@ -270,8 +260,14 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
-" }}}
 
+" Moving lines (https://vim.fandom.com/wiki/Moving_lines_up_or_down)
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-j> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 " ------------------------------------------------------------------------- }}}
 
 " Folding ----------------------------------------------------------------- {{{
