@@ -67,8 +67,10 @@ prep_to_path "$GOPATH/bin"
 prep_to_path "$HOME/.cargo/bin"
 prep_to_path "$HOME/Library/Python/2.7/bin"
 prep_to_path "$HOME/Library/Python/3.7/bin"
+prep_to_path "$HOME/.local/bin"
 prep_to_path "$HOME/.poetry/bin"
 prep_to_path "$HOME/.composer/vendor/bin"
+prep_to_path "/usr/local/opt/gettext/bin"
 
 # Prompt {{{
 set normal (set_color normal)
@@ -149,3 +151,6 @@ end
 status --is-interactive; and source (pyenv init - | psub)
 
 true
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/skali/google-cloud-sdk/path.fish.inc' ]; . '/Users/skali/google-cloud-sdk/path.fish.inc'; end
