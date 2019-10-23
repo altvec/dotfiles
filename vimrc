@@ -42,6 +42,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'honza/vim-snippets'
 Plug 'altercation/vim-colors-solarized'
+Plug 'rakr/vim-one'
+Plug 'rakr/vim-two-firewatch'
 Plug 'scrooloose/nerdtree'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -203,7 +205,7 @@ endif
 " Color scheme
 "
 syntax on
-color solarized
+" color solarized
 set background=light
 highlight Normal ctermbg=NONE
 " ------------------------------------------------------------------------- }}}
