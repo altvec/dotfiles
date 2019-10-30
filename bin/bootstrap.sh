@@ -39,41 +39,29 @@ echo "Installing homebrew..."
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 echo "Installing software..."
-brew install git \
-             cmake \
-             ctags \
-             go \
-             dep \
-             node \
-             fish \
-             ssh-copy-id \
-             heroku \
-             python \
-             python@2 \
-             ipython \
-             ansible \
-             pandoc \
-             pipenv \
-             httpie \
-             leiningen \
-             ffind \
-             fzf \
-             vim \
-             tmux \
-             reattach-to-user-namespace \
-             the_silver_searcher \
-             pandoc
+brew install bash \
+     bash-completion@2 \
+     coreutils \
+     git \
+     pyenv \
+     node \
+     leiningen \
+     ripgrep \
+     tree \
+     ssh-copy-id \
+     heroku \
+     ansible \
+     pandoc \
+     fzf \
+     tmux \
+     the_silver_searcher
 
-brew cask install emacs \
-                  java \
-                  karabiner-elements \
-                  racket \
-                  slack \
-                  slate \
-                  wireshark \
-                  transmission \
-                  iina \
-                  keepingyouawake
+brew cask install java \
+     karabiner-elements \
+     racket \
+     wireshark \
+     transmission \
+     iina \
 echo "... done."
 
 echo "Copying SSH keys and configs..."
@@ -91,28 +79,19 @@ link $DOTFILES/gitconfig $HOME/.gitconfig
 link $DOTFILES/gitignore $HOME/.gitignore
 echo "... done."
 
-echo "Updating submodules..."
-git submodule init
-git submodule update
-echo "... done."
-
 echo "Linking configs..."
-link $DOTFILES/profile $HOME/.profile
-link $DOTFILES/bash_profile $HOME/.bash_profile
-link $DOTFILES/fish $HOME/.config/fish
+link $DOTFILES/.bash_profile $HOME/.bash_profile
+link $DOTFILES/.bashrc $HOME/.bashrc
+link $DOTFILES/.bash $HOME/.bash
 link $DOTFILES/vimrc $HOME/.vimrc
-link $DOTFILES/vim $HOME/.vim
 link $DOTFILES/emacs.d/init.el $HOME/.emacs.d/init.el
-link $DOTFILES/emacs.d/init.org $HOME/.emacs.d/init.org
 link $DOTFILES/tmux.conf $HOME/.tmux.conf
-link $DOTFILES/slate $HOME/.slate
-link $DOTFILES/agignore $HOME/.agignore
 echo "... done."
 
-echo "==========================================================="
-echo "To change default shell to Fish you should do the following:"
-echo "sudo echo '/usr/loca/bin/fish' >> /etc/shells"
-echo "chsh -s /usr/local/bin/fish"
-echo "==========================================================="
+echo "Switch to using brew installed bash as default shell..."
+if ! grep -q "$BREW_PREFIX}/bin/bash" /etc/shells; then
+    echo "$BREW_PREFIX/bin/bash" | sudo tee -a /etc/shells
+    chsh -s "$BREW_PREFIX/bin/bash"
+fi
 
-echo Completed.
+echo "Completed."
