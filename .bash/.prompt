@@ -1,0 +1,112 @@
+#!/usr/bin/env bash
+
+
+if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
+    export TERM='gnome-256color'
+elif infocmp xterm-256color >/dev/null 2>&1; then
+    export TERM='xterm-256color'
+fi
+
+if tput setaf 1 &> /dev/null; then
+    tput sgr0
+    if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
+        BASE03=$(tput setaf 234)
+        BASE02=$(tput setaf 235)
+        BASE01=$(tput setaf 240)
+        BASE00=$(tput setaf 241)
+        BASE0=$(tput setaf 244)
+        BASE1=$(tput setaf 245)
+        BASE2=$(tput setaf 254)
+        BASE3=$(tput setaf 230)
+        YELLOW=$(tput setaf 136)
+        ORANGE=$(tput setaf 166)
+        RED=$(tput setaf 160)
+        MAGENTA=$(tput setaf 125)
+        VIOLET=$(tput setaf 61)
+        BLUE=$(tput setaf 33)
+        CYAN=$(tput setaf 37)
+        GREEN=$(tput setaf 64)
+    else
+        BASE03=$(tput setaf 8)
+        BASE02=$(tput setaf 0)
+        BASE01=$(tput setaf 10)
+        BASE00=$(tput setaf 11)
+        BASE0=$(tput setaf 12)
+        BASE1=$(tput setaf 14)
+        BASE2=$(tput setaf 7)
+        BASE3=$(tput setaf 15)
+        YELLOW=$(tput setaf 3)
+        ORANGE=$(tput setaf 9)
+        RED=$(tput setaf 1)
+        MAGENTA=$(tput setaf 5)
+        VIOLET=$(tput setaf 13)
+        BLUE=$(tput setaf 4)
+        CYAN=$(tput setaf 6)
+        GREEN=$(tput setaf 2)
+    fi
+    BOLD=$(tput bold)
+    RESET=$(tput sgr0)
+fi
+
+virtual_env () {
+    if [ -z "$VIRTUAL_ENV" ]; then
+        echo ''
+        return
+    fi
+    ENV_NAME=$(basename $VIRTUAL_ENV)
+    echo "$ENV_NAME "
+}
+
+prompt_git() {
+	  local s='';
+	  local branchName='';
+
+	  # Check if the current directory is in a Git repository.
+	  git rev-parse --is-inside-work-tree &>/dev/null || return;
+
+	  # Check for what branch we’re on.
+	  # Get the short symbolic ref. If HEAD isn’t a symbolic ref, get a
+	  # tracking remote branch or tag. Otherwise, get the
+	  # short SHA for the latest commit, or give up.
+	  branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null || \
+		                  git describe --all --exact-match HEAD 2> /dev/null || \
+		                  git rev-parse --short HEAD 2> /dev/null || \
+		                  echo '(unknown)')";
+
+	  # Early exit for Chromium & Blink repo, as the dirty check takes too long.
+	  # Thanks, @paulirish!
+	  # https://github.com/paulirish/dotfiles/blob/dd33151f/.bash_prompt#L110-L123
+	  repoUrl="$(git config --get remote.origin.url)";
+	  if grep -q 'chromium/src.git' <<< "${repoUrl}"; then
+		    s+='*';
+	  else
+		    # Check for uncommitted changes in the index.
+		    if ! $(git diff --quiet --ignore-submodules --cached); then
+			      s+='+';
+		    fi;
+		    # Check for unstaged changes.
+		    if ! $(git diff-files --quiet --ignore-submodules --); then
+			      s+='!';
+		    fi;
+		    # Check for untracked files.
+		    if [ -n "$(git ls-files --others --exclude-standard)" ]; then
+			      s+='?';
+		    fi;
+		    # Check for stashed files.
+		    if $(git rev-parse --verify refs/stash &>/dev/null); then
+			      s+='$';
+		    fi;
+	  fi;
+
+	  [ -n "${s}" ] && s=" [${s}]";
+
+	  echo -e "${1}${branchName}${2}${s}";
+}
+
+PS1="\n\[$MAGENTA\]$(virtual_env)\[$BASE0\]" # virtual env name
+PS1+="\[$BLUE\]\w\[$BASE0\]" # working dir
+PS1+="\$(prompt_git \"\[$BASE0\] on \[$VIOLET\]\" \"\[$BLUE\]\")"
+PS1+="\n"
+PS1+="\[$BASE0\]→ \[$RESET\]"
+
+export PS1
