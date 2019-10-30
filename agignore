@@ -1,8 +1,0 @@
-tags
-tags.bak
-*.wsdl
-target
-*.public.key
-*.private.key
-*.pgp
-*.fasl
