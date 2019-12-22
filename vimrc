@@ -42,34 +42,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'honza/vim-snippets'
 Plug 'altercation/vim-colors-solarized'
-Plug 'rakr/vim-one'
-Plug 'rakr/vim-two-firewatch'
-Plug 'scrooloose/nerdtree'
+Plug 'dracula/vim'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-let g:coc_global_extensions = [
-      \ 'coc-tsserver',
-      \ 'coc-html',
-      \ 'coc-lists',
-      \ 'coc-phpls',
-      \ 'coc-sh',
-      \ 'coc-css',
-      \ 'coc-stylelint',
-      \ 'coc-vimlsp',
-      \ 'coc-go',
-      \ 'coc-elixir',
-      \ 'coc-json',
-      \ 'coc-eslint',
-      \ 'coc-python',
-      \ 'coc-java',
-      \ 'coc-jest',
-      \ 'coc-solargraph',
-      \ 'coc-yaml',
-      \ 'coc-highlight',
-      \ 'coc-snippets',
-      \ 'coc-docker',
-      \ 'coc-diagnostic',
-      \]
 
 call plug#end()
 " ------------------------------------------------------------------------- }}}
@@ -205,8 +179,8 @@ endif
 " Color scheme
 "
 syntax on
-" color solarized
-set background=light
+color dracula
+let g:dracula_colorterm = 0
 highlight Normal ctermbg=NONE
 " ------------------------------------------------------------------------- }}}
 
@@ -338,7 +312,7 @@ let g:lightline = {
   \  'component_function': {
   \    'gitbranch': 'gitbranch#name'
   \  },
-  \  'colorscheme': 'solarized'
+  \  'colorscheme': 'dracula'
   \ }
 " }}}
 
