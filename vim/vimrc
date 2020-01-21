@@ -179,8 +179,9 @@ endif
 " Color scheme
 "
 syntax on
-color dracula
-let g:dracula_colorterm = 0
+color solarized
+" color dracula
+" let g:dracula_colorterm = 0
 highlight Normal ctermbg=NONE
 " ------------------------------------------------------------------------- }}}
 
@@ -312,7 +313,7 @@ let g:lightline = {
   \  'component_function': {
   \    'gitbranch': 'gitbranch#name'
   \  },
-  \  'colorscheme': 'dracula'
+  \  'colorscheme': 'solarized'
   \ }
 " }}}
 
