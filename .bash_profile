@@ -1,14 +1,13 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH"
 
-
 # Load shell dotfiles from .bash/
-# - `.paths` used to extend `$PATH`
-# - `.aliases` use to store commands aliases
-# - `.prompt` prompt settings
-# - `.functions` useful functions
-# - `.exports` some exports
-for file in ~/.bash/.{paths,aliases,prompt,functions,exports}; do
+# - `paths` used to extend `$PATH`
+# - `aliases` use to store commands aliases
+# - `prompt` prompt settings
+# - `functions` useful functions
+# - `exports` some exports
+for file in ~/.bash/{paths,aliases,prompt,functions,exports}; do
     [ -r "$file" ] && [ -f "$file" ] && source "$file"
 done
 unset file
@@ -55,3 +54,8 @@ fi
 if command -v pyenv 1>/dev/null 2>&1; then
     eval "$(pyenv init -)"
 fi
+
+# ------------------------------------------------------------------------------
+# FZF
+# ------------------------------------------------------------------------------
+[ -f ~/.fzf.bash ]  && source ~/.fzf.bash

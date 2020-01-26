@@ -20,3 +20,4 @@ alias ll="ls -lAF ${colorflag}"
 
 alias grep="grep --color=auto"
 alias egrep="egrep --color=auto"
+alias vim="nvim"
