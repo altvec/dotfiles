@@ -42,7 +42,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'honza/vim-snippets'
 Plug 'altercation/vim-colors-solarized'
-Plug 'dracula/vim'
 Plug 'ekalinin/Dockerfile.vim', { 'for': 'Dockerfile' }
 
 call plug#end()
@@ -179,9 +178,10 @@ endif
 " Color scheme
 "
 syntax on
-color solarized
-" color dracula
-" let g:dracula_colorterm = 0
+set background=light
+let g:solarized_termcolors=256
+let g:solarized_degrade=1
+colorscheme solarized
 highlight Normal ctermbg=NONE
 " ------------------------------------------------------------------------- }}}
 
@@ -304,7 +304,6 @@ nmap <Leader>a :Ag<CR>
 " }}}
 
 " Lightline {{{
-set background=light
 let g:lightline = {
   \  'active': {
   \    'left': [['mode', 'paste'], ['readonly', 'filename', 'modified']],
